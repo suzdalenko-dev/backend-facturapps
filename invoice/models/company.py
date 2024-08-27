@@ -6,9 +6,11 @@ class Company(models.Model):
     email     = models.CharField(max_length=111, null=True, unique=True)
     password  = models.CharField(max_length=111, null=True)
     tlf       = models.CharField(max_length=33, null=True)
-    numvisit  = models.BigIntegerField(null=True)
+
+    numvisit  = models.BigIntegerField(default=0)
     lastvisit = models.CharField(max_length=33, null=True)
     state     = models.CharField(max_length=22, null=True)
+    hascode   = models.CharField(max_length=111, null=True)
 
     address   = models.CharField(max_length=111, null=True)
     zipcode   = models.CharField(max_length=22, null=True)

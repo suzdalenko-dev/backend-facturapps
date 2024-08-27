@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from invoice.controllers import registrer, login
+
 urlpatterns = [
-   # path('admin/', admin.site.urls),
+   path('register/', registrer.try_register ),
+   path('login/', login.try_login),
 ]
