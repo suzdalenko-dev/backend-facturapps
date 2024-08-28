@@ -6,16 +6,18 @@ class Company(models.Model):
     email     = models.CharField(max_length=111, null=True, unique=True)
     password  = models.CharField(max_length=111, null=True)
     tlf       = models.CharField(max_length=33, null=True)
+    tlf2      = models.CharField(max_length=33, null=True)
 
-    numvisit  = models.BigIntegerField(default=0)
-    lastvisit = models.CharField(max_length=33, null=True)
-    state     = models.CharField(max_length=22, null=True)
-    hascode   = models.CharField(max_length=111, null=True)
+    numvisit   = models.BigIntegerField(default=0)
+    regtime    = models.CharField(max_length=33, null=True)
+    lastvisit  = models.CharField(max_length=33, null=True)
+    state      = models.CharField(max_length=22, null=True)
+    uid        = models.CharField(max_length=111, null=True)
 
-    address   = models.CharField(max_length=111, null=True)
-    zipcode   = models.CharField(max_length=22, null=True)
-    province  = models.CharField(max_length=11, null=True)
-    country   = models.CharField(max_length=22, null=True)
+    address    = models.CharField(max_length=111, null=True)
+    zipcode    = models.CharField(max_length=22, null=True)
+    province   = models.CharField(max_length=11, null=True)
+    country    = models.CharField(max_length=22, null=True)
 
 
     class Meta:
