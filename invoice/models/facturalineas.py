@@ -1,6 +1,6 @@
 from django.db import models
 
-class Invoiceline(models.Model):
+class Facturalineas(models.Model):
     id           = models.AutoField(primary_key=True)
     invoice_id   = models.BigIntegerField(null=True)
     company_id   = models.BigIntegerField(null=True)

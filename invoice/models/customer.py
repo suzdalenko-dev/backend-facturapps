@@ -3,7 +3,7 @@ from django.db import models
 class Customer(models.Model):
     id          = models.AutoField(primary_key=True)
     company_id  = models.BigIntegerField(null=True)
-    usenum      = models.BigIntegerField(null=True)         
+    usednum     = models.BigIntegerField(null=True)         
 
     name        = models.CharField(max_length=255, null=True)
     cif_nif     = models.CharField(max_length=33, null=True)
