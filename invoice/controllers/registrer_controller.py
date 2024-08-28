@@ -1,5 +1,5 @@
 from invoice.models.company import Company
-from ..utils.json_suzdal import json_suzdal
+from ..utils.util_suzdal import json_suzdal
 from ..utils.time_suzdal import time_suzdal
 from ..utils.time_suzdal import second_suzdal
 

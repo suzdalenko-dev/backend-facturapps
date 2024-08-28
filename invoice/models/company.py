@@ -19,6 +19,7 @@ class Company(models.Model):
     province   = models.CharField(max_length=11, null=True)
     country    = models.CharField(max_length=22, null=True)
 
+    price_hour = models.DecimalField(max_digits=11, null=True, decimal_places=2)
 
     class Meta:
         indexes = [

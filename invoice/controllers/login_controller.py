@@ -1,5 +1,5 @@
 from invoice.models.company import Company
-from ..utils.json_suzdal import json_suzdal
+from ..utils.util_suzdal import json_suzdal
 from ..utils.time_suzdal import time_suzdal
 
 
@@ -19,7 +19,7 @@ def try_login(request):
         company.save()
 
         rdata = {
-            'id': company.id,
+            'company_id': company.id,
             'uid': company.uid,
             'status': 'ok',
         }

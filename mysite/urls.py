@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from invoice.controllers import registrer, login
+from invoice.controllers import login_controller, registrer_controller, invoice_controller, default_controller
 
 urlpatterns = [
-   path('register/', registrer.try_register ),
-   path('login/', login.try_login),
+   path('register/', registrer_controller.try_register ),
+   path('login/', login_controller.try_login),
+   path('invoice/<action>/<id>', invoice_controller.invoice_actions),
+   path('default/<str:action>/<str:entity>/<int:id>', default_controller.default_actions),
 ]
