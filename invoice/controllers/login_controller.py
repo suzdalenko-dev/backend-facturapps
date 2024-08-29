@@ -12,7 +12,7 @@ def try_login(request):
 
         company = Company.objects.get(cif=cif, email=email)
         if company.password != password:
-            return json_suzdal({'message': 'Company matching query does not exist 2', 'status': 'error'})
+            return json_suzdal({'message': 'Usuario no encotrado', 'status': 'error'})
       
         company.lastvisit = time_suzdal()
         company.numvisit += 1
@@ -28,4 +28,4 @@ def try_login(request):
         return res
     
     except Exception as e:
-            return json_suzdal({'message': str(e),'status': 'error'})
+            return json_suzdal({'message': 'Usuario no encotrado '+str(e),'status': 'error'})
