@@ -20,15 +20,12 @@ def user_auth(request):
     uid        = str(request.POST.get('uid')).strip()
     password   = str(request.POST.get('password')).strip()
 
-    # print(company_id, email, uid)
-
     try:
-        company = Company.objects.get(id=company_id)
-        # print(company)
-        if company.cif == cif and company.email == email and company.uid == uid and company.password == password:
-            return True
+        company = Company.objects.filter(id=company_id).values('cif', 'email', 'uid', 'password', 'id').first()
+        if company['cif'] == cif and company['email'] == email and company['uid'] == uid and company['password'] == password:
+            return [True, company]
         else: 
-            return False
+            return [None, None]
 
     except Exception as e:
-        return False
+        return [None, None]
