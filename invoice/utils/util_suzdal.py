@@ -1,5 +1,6 @@
 from django.http import JsonResponse
 from invoice.models.company import Company
+from copy import deepcopy
 
 
 def json_suzdal(response_data):
@@ -50,5 +51,6 @@ def update_company_data(request):
         c = Company.objects.filter(id=company_id).values('id', 'description', 'cif', 'email', 'emailcliente', 'uid', 'password', 'tlf', 'tlf2', 'country', 'city', 'zipcode', 'province', 'address', 'price').first()
         return [True, c]
     except Exception as e:
+        print(str(e))
         return [None, None]
 
