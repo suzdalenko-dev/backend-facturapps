@@ -1,5 +1,8 @@
 from django.http import JsonResponse
+from invoice.models.article import Article
 from invoice.models.company import Company
+from invoice.models.customer import Customer
+from invoice.models.document import Document
 from copy import deepcopy
 
 
@@ -52,5 +55,47 @@ def update_company_data(request):
         return [True, c]
     except Exception as e:
         print(str(e))
-        return [None, None]
+        return None
 
+
+
+def create_new_article(request):
+    description = str(request.POST.get('description')).strip()
+    price       = request.POST.get('price')
+    company_id  = int(request.POST.get('company_id'))
+    try:
+        article  = Article.objects.create(description=description, price=price, company_id=company_id)
+        document = Document.objects.filter(company_id=company_id, description= 'articulo_numero').values('value').first()
+        article.artcode = document['value']
+        article.save()
+        if article.id > 0:
+            return True
+        else:
+            return None
+    except Exception as e:
+        return None
+    
+
+
+def create_new_customer(request):
+    company_id  = int(request.POST.get('company_id'))
+    cif_nif     = str(request.POST.get('cif_nif')).strip()
+    name        = str(request.POST.get('name')).strip()
+    email       = str(request.POST.get('email')).strip()
+    phone       = str(request.POST.get('phone')).strip()
+    country     = str(request.POST.get('country')).strip()
+    province    = str(request.POST.get('province')).strip()
+    zipcode     = str(request.POST.get('zipcode')).strip()
+    city        = str(request.POST.get('city')).strip()
+    address     = str(request.POST.get('description')).strip()
+    try:
+        customer = Customer.objects.create(cif_nif=cif_nif, company_id=company_id, name=name, email=email, phone=phone, country=country, province=province, zipcode=zipcode, city=city, address=address)
+        document = Document.objects.filter(company_id=company_id, description= 'cliente_numero').values('value').first()
+        customer.clientcode = document['value']
+        customer.save()
+        if customer.id > 0:
+            return True
+        else:
+            return None
+    except Exception as e:
+        return None

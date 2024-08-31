@@ -5,3 +5,4 @@ from .article import Article
 from .customer import Customer
 from .vehicledata import Vehicledata
 from .facturalineas import Facturalineas
+from .document import Document

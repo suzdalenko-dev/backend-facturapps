@@ -2,7 +2,7 @@ from invoice.models.company import Company
 from invoice.models.factura import Factura
 from invoice.models.customer import Customer
 from invoice.models.article import Article
-from ..utils.util_suzdal import json_suzdal, update_company_data, user_auth
+from ..utils.util_suzdal import create_new_article, create_new_customer, json_suzdal, update_company_data, user_auth
 
 
 def default_actions(request, action, entity, id):
@@ -20,16 +20,12 @@ def default_actions(request, action, entity, id):
                 response += [x]
     
         elif action == 'get' and entity == 'cliente':
-            clientes = Customer.objects.filter(company_id=company['id']).order_by('-id').values('id', 'name')
-            for cliente in clientes:
-                x = {'id':cliente['id'], 'name':cliente['name'], }
-                response += [x]
+            clientes = Customer.objects.filter(company_id=company['id']).order_by('-id').values('id', 'clientcode', 'name', 'cif_nif', 'email', 'phone', 'city')
+            response = list(clientes)
 
         elif action == 'get' and entity == 'articulo':
-            articulos = Article.objects.filter(company_id=company['id']).order_by('-id').values('id', 'description')
-            for articulo in articulos:
-                x = {'id':articulo['id'], 'description':articulo['description'], }
-                response += [x]
+            articulos = Article.objects.filter(company_id=company['id']).order_by('-id').values('id', 'description', 'price', 'artcode')
+            response = list(articulos)
 
         elif action == 'get' and entity == 'empresa':
                 response += [company]
@@ -38,7 +34,17 @@ def default_actions(request, action, entity, id):
             updated_status, company = update_company_data(request)
             response += [company]
             if updated_status is None:
-                 return json_suzdal({'message': 'Error en la actualizacion de la empresa', 'status': 'error', 'company':company})
+                return json_suzdal({'message': 'Error en la actualizacion de la empresa', 'status': 'error', 'company':company})
+
+        elif action == 'put' and entity == 'articulo':
+            created_status = create_new_article(request)
+            if created_status is None:
+                return json_suzdal({'message': 'Error en la creacíon de artículo', 'status': 'error', 'company':company})
+        
+        elif action == 'put' and entity == 'cliente':
+            customer_status = create_new_customer(request)
+            if customer_status is None:
+                return json_suzdal({'message': 'Error en la creacíon de cliente ', 'status': 'error', 'company':company})
 
         else:
             return json_suzdal({'message': 'No existe accion o identidad', 'status': 'error', 'company':company})

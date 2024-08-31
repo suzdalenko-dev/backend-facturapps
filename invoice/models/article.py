@@ -5,13 +5,14 @@ class Article(models.Model):
     company_id  = models.BigIntegerField(null=True)
     usenum      = models.BigIntegerField(null=True)
 
-    code        = models.CharField(max_length=41, null=True, unique=True)
-    description = models.CharField(max_length=111, null=True, unique=True)
-    quantity    = models.DecimalField(max_digits=11, null=True, decimal_places=2)
+    artcode     = models.PositiveBigIntegerField(default=0)
+    description = models.CharField(max_length=111, null=True)
     price       = models.DecimalField(max_digits=11, null=True, decimal_places=2)
 
 
     class Meta:
         indexes = [
+            models.Index(fields=['id']),
             models.Index(fields=['company_id']),
+            models.Index(fields=['description']),
         ]

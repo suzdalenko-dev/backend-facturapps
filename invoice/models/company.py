@@ -13,7 +13,6 @@ class Company(models.Model):
     numvisit     = models.BigIntegerField(default=0)
     regtime      = models.CharField(max_length=33, null=True)
     lastvisit    = models.CharField(max_length=33, null=True)
-    state        = models.CharField(max_length=22, null=True)
     uid          = models.CharField(max_length=111, null=True)
 
     country      = models.CharField(max_length=33, null=True)
