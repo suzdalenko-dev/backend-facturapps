@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.http import JsonResponse
 from invoice.models.article import Article
 from invoice.models.company import Company
@@ -25,7 +26,7 @@ def user_auth(request):
     password   = str(request.POST.get('password')).strip()
 
     try:
-        company = Company.objects.filter(id=company_id).values('id', 'description', 'cif', 'email', 'emailcliente', 'uid', 'password', 'tlf', 'tlf2', 'country', 'city', 'zipcode', 'province', 'address', 'price').first()
+        company = Company.objects.filter(id=company_id).values('id', 'razon', 'cif', 'person_name', 'email', 'emailcompany', 'uid', 'password', 'tlf', 'tlf2', 'country', 'city', 'zipcode', 'province', 'address', 'price').first()
         if company['cif'] == cif and company['email'] == email and company['uid'] == uid and company['password'] == password:
             return [True, company]
         else: 
@@ -40,8 +41,9 @@ def update_company_data(request):
     company_id = request.POST.get('company_id')
     try:
         c = Company.objects.get(id=company_id)
-        c.description  = str(request.POST.get('description')).strip()
-        c.emailcliente = str(request.POST.get('emailcliente')).strip()
+        c.razon        = str(request.POST.get('razon')).strip()
+        c.person_name  = str(request.POST.get('person_name')).strip()
+        c.emailcompany = str(request.POST.get('emailcompany')).strip()
         c.country      = str(request.POST.get('country')).strip()
         c.province     = str(request.POST.get('province')).strip()
         c.zipcode      = str(request.POST.get('zipcode')).strip()
@@ -51,7 +53,7 @@ def update_company_data(request):
         c.tlf2         = str(request.POST.get('tlf2')).strip()
         c.price        = str(request.POST.get('price')).strip()
         c.save()
-        c = Company.objects.filter(id=company_id).values('id', 'description', 'cif', 'email', 'emailcliente', 'uid', 'password', 'tlf', 'tlf2', 'country', 'city', 'zipcode', 'province', 'address', 'price').first()
+        c = Company.objects.filter(id=company_id).values('id', 'razon', 'cif', 'person_name', 'email', 'emailcompany', 'uid', 'password', 'tlf', 'tlf2', 'country', 'city', 'zipcode', 'province', 'address', 'price').first()
         return [True, c]
     except Exception as e:
         print(str(e))
@@ -61,11 +63,12 @@ def update_company_data(request):
 
 def create_new_article(request):
     description = str(request.POST.get('description')).strip()
-    price       = request.POST.get('price')
+    price       = request.POST.get('price'); price = Decimal(price).quantize(Decimal('0.00'))
     company_id  = int(request.POST.get('company_id'))
+    article     = None
     try:
-        article  = Article.objects.create(description=description, price=price, company_id=company_id)
-        document = Document.objects.filter(company_id=company_id, description= 'articulo_numero').values('value').first()
+        article  = Article.objects.create(description=description, price=price, company_id=company_id)                      
+        document = Document.objects.filter(company_id=company_id, description= 'articulo_numero').values('value').first() 
         article.artcode = document['value']
         article.save()
         if article.id > 0:
@@ -73,25 +76,52 @@ def create_new_article(request):
         else:
             return None
     except Exception as e:
+        article.delete()
         return None
     
 
 
 def create_new_customer(request):
-    company_id  = int(request.POST.get('company_id'))
-    cif_nif     = str(request.POST.get('cif_nif')).strip()
-    name        = str(request.POST.get('name')).strip()
-    email       = str(request.POST.get('email')).strip()
-    phone       = str(request.POST.get('phone')).strip()
-    country     = str(request.POST.get('country')).strip()
-    province    = str(request.POST.get('province')).strip()
-    zipcode     = str(request.POST.get('zipcode')).strip()
-    city        = str(request.POST.get('city')).strip()
-    address     = str(request.POST.get('description')).strip()
+    company_id    = int(request.POST.get('company_id'))
+    cif_nif       = str(request.POST.get('cif_nif')).strip()
+    razon         = str(request.POST.get('razon')).strip()
+    person_name   = str(request.POST.get('person_name')).strip()
+    emailcustomer = str(request.POST.get('emailcustomer')).strip()
+    phone         = str(request.POST.get('phone')).strip()
+    country       = str(request.POST.get('country')).strip()
+    province      = str(request.POST.get('province')).strip()
+    zipcode       = str(request.POST.get('zipcode')).strip()
+    city          = str(request.POST.get('city')).strip()
+    address       = str(request.POST.get('address')).strip()
+    customer      = None
     try:
-        customer = Customer.objects.create(cif_nif=cif_nif, company_id=company_id, name=name, email=email, phone=phone, country=country, province=province, zipcode=zipcode, city=city, address=address)
+        customer = Customer.objects.create(cif_nif=cif_nif, company_id=company_id, razon=razon, person_name=person_name, emailcustomer=emailcustomer, phone=phone, country=country, province=province, zipcode=zipcode, city=city, address=address)
         document = Document.objects.filter(company_id=company_id, description= 'cliente_numero').values('value').first()
         customer.clientcode = document['value']
+        customer.save()
+        if customer.id > 0:
+            return True
+        else:
+            return None
+    except Exception as e:
+        customer.delete()
+        return None
+    
+
+def upgrade_existing_customer(request, id):
+    company_id    = int(request.POST.get('company_id'))
+    try:
+        customer               = Customer.objects.get(id=id, company_id=company_id)
+        customer.cif_nif       = str(request.POST.get('cif_nif')).strip()
+        customer.razon         = str(request.POST.get('razon')).strip()
+        customer.person_name   = str(request.POST.get('person_name')).strip()
+        customer.emailcustomer = str(request.POST.get('emailcustomer')).strip()
+        customer.phone         = str(request.POST.get('phone')).strip()
+        customer.country       = str(request.POST.get('country')).strip()
+        customer.province      = str(request.POST.get('province')).strip()
+        customer.zipcode       = str(request.POST.get('zipcode')).strip()
+        customer.city          = str(request.POST.get('city')).strip()
+        customer.address       = str(request.POST.get('address')).strip()
         customer.save()
         if customer.id > 0:
             return True
