@@ -9,7 +9,7 @@ def default_actions(request, action, entity, id):
     auth_status, company = user_auth(request)
     if auth_status is None or company is None:
         return json_suzdal({'login': False, 'status':'error', 'message':'Usuario no esta logeado'})
-
+    
     try:
         response = []
 
@@ -25,7 +25,10 @@ def default_actions(request, action, entity, id):
             response = list(clientes)
 
         elif action == 'get' and entity == 'articulo':
-            articulos = Article.objects.filter(company_id=company['id']).order_by('-id').values('id', 'description', 'price', 'artcode')
+            if id == 0:
+                articulos = Article.objects.filter(company_id=company['id']).order_by('-id').values('id', 'description', 'price', 'artcode', 'iva', 'ivatype')
+            else:
+                articulos = Article.objects.filter(id=id, company_id=company['id']).order_by('-id').values('id', 'description', 'price', 'artcode', 'iva', 'ivatype')
             response = list(articulos)
 
         elif action == 'get' and entity == 'empresa':
@@ -56,5 +59,6 @@ def default_actions(request, action, entity, id):
         return json_suzdal({'res':response, 'status':'ok', 'company':company})
     
     except Exception as e:
+        print(str(e))
         return json_suzdal({'message': str(e),'status': 'error'})
   

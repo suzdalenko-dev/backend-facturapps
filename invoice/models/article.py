@@ -8,7 +8,8 @@ class Article(models.Model):
     artcode     = models.PositiveBigIntegerField(default=0)
     description = models.CharField(max_length=111, null=True)
     price       = models.DecimalField(max_digits=11, null=True, decimal_places=2)
-
+    iva         = models.DecimalField(max_digits=11, null=True, decimal_places=2)
+    ivatype     = models.CharField(max_length=11, null=True)
 
     class Meta:
         indexes = [

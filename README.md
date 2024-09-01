@@ -11,3 +11,11 @@ python manage.py migrate sessions zero
 ###### 
 
 
+###### company_id:1, cif:X420, tlf:+34657666135, email:x420@gmail.com, pass:123456
+######
+######
+######
+######
+######
+######
+######

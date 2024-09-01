@@ -51,7 +51,7 @@ def update_company_data(request):
         c.address      = str(request.POST.get('address')).strip()
         c.tlf          = str(request.POST.get('tlf')).strip()
         c.tlf2         = str(request.POST.get('tlf2')).strip()
-        c.price        = str(request.POST.get('price')).strip()
+        c.price        = str(request.POST.get('price')).strip().replace(',', '.')
         c.save()
         c = Company.objects.filter(id=company_id).values('id', 'razon', 'cif', 'person_name', 'email', 'emailcompany', 'uid', 'password', 'tlf', 'tlf2', 'country', 'city', 'zipcode', 'province', 'address', 'price').first()
         return [True, c]
@@ -63,11 +63,13 @@ def update_company_data(request):
 
 def create_new_article(request):
     description = str(request.POST.get('description')).strip()
-    price       = request.POST.get('price'); price = Decimal(price).quantize(Decimal('0.00'))
+    price       = str(request.POST.get('price')).replace(',', '.')
+    iva         = str(request.POST.get('iva')).replace(',', '.')   
+    ivatype     = str(request.POST.get('ivatype')).strip()
     company_id  = int(request.POST.get('company_id'))
     article     = None
     try:
-        article  = Article.objects.create(description=description, price=price, company_id=company_id)                      
+        article  = Article.objects.create(description=description, company_id=company_id, price=price, ivatype=ivatype, iva=iva)   
         document = Document.objects.filter(company_id=company_id, description= 'articulo_numero').values('value').first() 
         article.artcode = document['value']
         article.save()
@@ -76,7 +78,8 @@ def create_new_article(request):
         else:
             return None
     except Exception as e:
-        article.delete()
+        if article is not None:
+            article.delete()
         return None
     
 
