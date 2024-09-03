@@ -21,11 +21,7 @@ class Factura(models.Model):
     emisor_city           = models.CharField(max_length=111, null=True)                 # 8. El tipo impositivo que se aplica, así como la cuota tributaria.
     emisor_address        = models.CharField(max_length=111, null=True)                 # 9. La fecha en la que se hayan efectuado las operaciones siempre que se trate de una fecha distinta a la de expedición de la factura.
 
-
-    ejercicio             = models.CharField(max_length=11, null=True)
     company_id            = models.BigIntegerField(null=True)
-
-
     
     vencimiento      = models.CharField(max_length=33, null=True)
     forma_pago       = models.CharField(max_length=111, default="CONTADO")
@@ -65,9 +61,10 @@ class Factura(models.Model):
     subtotal         = models.DecimalField(max_digits=11, decimal_places=2, default=0)
     total            = models.DecimalField(max_digits=11, decimal_places=2, default=0)
 
-    labour_hours    = models.DecimalField(max_digits=11, decimal_places=2, null=True)
-
-    
+    labour_hours     = models.DecimalField(max_digits=11, decimal_places=2, null=True)
+    remarks          = models.CharField(max_length=254, null=True)
+    comment_ret_rec  = models.CharField(max_length=254, null=True)
+    ejercicio        = models.CharField(max_length=7, null=True)
 
 
     class Meta:

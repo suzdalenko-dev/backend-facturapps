@@ -132,3 +132,21 @@ def upgrade_existing_customer(request, id):
             return None
     except Exception as e:
         return None
+    
+
+
+def update_old_article(request, id):
+    company_id  = int(request.POST.get('company_id'))
+    try:
+        article  = Article.objects.get(id=id, company_id=company_id)   
+        article.description = str(request.POST.get('description')).strip()
+        article.price       = str(request.POST.get('price')).replace(',', '.')
+        article.iva         = str(request.POST.get('iva')).replace(',', '.')   
+        article.ivatype     = str(request.POST.get('ivatype')).strip()
+        article.save()
+        if article.id > 0:
+            return True
+        else:
+            return None
+    except Exception as e:
+        return None
