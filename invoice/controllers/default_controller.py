@@ -19,14 +19,14 @@ def default_actions(request, action, entity, id):
     
         elif action == 'get' and entity == 'cliente':
             if id == 0:
-                clientes = Customer.objects.filter(company_id=company['id']).order_by('-usednum','-id').values('id', 'clientcode', 'razon', 'cif_nif', 'person_name', 'city', 'phone')
+                clientes = Customer.objects.filter(company_id=company['id']).order_by('-clientcode').values('id', 'clientcode', 'razon', 'cif_nif', 'person_name', 'city', 'phone')
             else:
                 clientes = Customer.objects.filter(id=id, company_id=company['id']).order_by('-id').values('id', 'clientcode', 'razon', 'cif_nif', 'person_name', 'emailcustomer', 'phone', 'country', 'province', 'zipcode', 'city', 'address')
             response = list(clientes)
 
         elif action == 'get' and entity == 'articulo':
             if id == 0:
-                articulos = Article.objects.filter(company_id=company['id']).order_by('-usednum','-id').values('id', 'description', 'price', 'artcode', 'iva', 'ivatype',)
+                articulos = Article.objects.filter(company_id=company['id']).order_by('-artcode').values('id', 'description', 'price', 'artcode', 'iva', 'ivatype',)
             else:
                 articulos = Article.objects.filter(id=id, company_id=company['id']).order_by('-id').values('id', 'description', 'price', 'artcode', 'iva', 'ivatype')
             response = list(articulos)
