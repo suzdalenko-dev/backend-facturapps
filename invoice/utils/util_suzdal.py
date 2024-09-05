@@ -28,6 +28,8 @@ def user_auth(request):
     try:
         company = Company.objects.filter(id=company_id).values('id', 'razon', 'cif', 'person_name', 'email', 'emailcompany', 'uid', 'password', 'tlf', 'tlf2', 'country', 'city', 'zipcode', 'province', 'address', 'price').first()
         if company['cif'] == cif and company['email'] == email and company['uid'] == uid and company['password'] == password:
+            company['password'] = None
+            company['uid'] = None
             return [True, company]
         else: 
             return [None, None]
@@ -52,8 +54,8 @@ def update_company_data(request):
         c.tlf          = str(request.POST.get('tlf')).strip()
         c.tlf2         = str(request.POST.get('tlf2')).strip()
         c.price        = str(request.POST.get('price')).strip().replace(',', '.')
-        c.save()
-        c = Company.objects.filter(id=company_id).values('id', 'razon', 'cif', 'person_name', 'email', 'emailcompany', 'uid', 'password', 'tlf', 'tlf2', 'country', 'city', 'zipcode', 'province', 'address', 'price').first()
+        c.save()                                                                                                    
+        c = Company.objects.filter(id=company_id).values('id', 'razon', 'cif', 'person_name', 'email', 'emailcompany', 'tlf', 'tlf2', 'country', 'city', 'zipcode', 'province', 'address', 'price').first()
         return [True, c]
     except Exception as e:
         print(str(e))
