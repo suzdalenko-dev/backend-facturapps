@@ -26,7 +26,7 @@ def default_actions(request, action, entity, id):
 
         elif action == 'get' and entity == 'articulo':
             if id == 0:
-                articulos = Article.objects.filter(company_id=company['id']).order_by('-usednum','-id').values('id', 'description', 'price', 'artcode', 'iva', 'ivatype')
+                articulos = Article.objects.filter(company_id=company['id']).order_by('-usednum','-id').values('id', 'description', 'price', 'artcode', 'iva', 'ivatype',)
             else:
                 articulos = Article.objects.filter(id=id, company_id=company['id']).order_by('-id').values('id', 'description', 'price', 'artcode', 'iva', 'ivatype')
             response = list(articulos)

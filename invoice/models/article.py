@@ -3,7 +3,7 @@ from django.db import models
 class Article(models.Model):
     id          = models.AutoField(primary_key=True)
     company_id  = models.BigIntegerField(null=True)
-    usenum      = models.BigIntegerField(null=True)
+    usednum     = models.BigIntegerField(null=True)
 
     artcode     = models.PositiveBigIntegerField(default=0)
     description = models.CharField(max_length=111, null=True)
