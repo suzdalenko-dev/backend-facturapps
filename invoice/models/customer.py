@@ -4,8 +4,7 @@ class Customer(models.Model):
     id           = models.AutoField(primary_key=True)
     company_id   = models.BigIntegerField(null=True)
     clientcode   = models.PositiveBigIntegerField(default=0)
-    usednum      = models.BigIntegerField(null=True)         
-
+        
     cif_nif       = models.CharField(max_length=33, null=True)
     razon         = models.CharField(max_length=255, null=True)
     person_name   = models.CharField(max_length=255, null=True)

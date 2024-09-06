@@ -61,7 +61,7 @@ def update_company_data(request):
         print(str(e))
         return None
 
-
+# suzdalenko@gmail.com X4207693G svoboda2019
 
 def create_new_article(request):
     description = str(request.POST.get('description')).strip()
@@ -71,7 +71,8 @@ def create_new_article(request):
     company_id  = int(request.POST.get('company_id'))
     article     = None
     try:
-        article  = Article.objects.create(description=description, company_id=company_id, price=price, ivatype=ivatype, iva=iva)   
+        article  = Article.objects.create(description=description, company_id=company_id, price=price, ivatype=ivatype, iva=iva)
+        print(article)
         document = Document.objects.filter(company_id=company_id, description= 'articulo_numero').values('value').first() 
         article.artcode = document['value']
         article.save()
