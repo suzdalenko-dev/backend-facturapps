@@ -18,12 +18,19 @@ def json_suzdal(response_data):
 
 
 
-def user_auth(request):
-    company_id = str(request.POST.get('company_id')).strip()
-    cif        = str(request.POST.get('cif')).strip()
-    email      = str(request.POST.get('email')).strip()
-    uid        = str(request.POST.get('uid')).strip()
-    password   = str(request.POST.get('password')).strip()
+def user_auth(request, data):
+    if data is None:
+        company_id = str(request.POST.get('company_id')).strip()
+        cif        = str(request.POST.get('cif')).strip()
+        email      = str(request.POST.get('email')).strip()
+        uid        = str(request.POST.get('uid')).strip()
+        password   = str(request.POST.get('password')).strip()
+    else:
+        company_id = str(data['credentials']['company_id']).strip()
+        cif        = str(data['credentials']['cif']).strip()
+        email      = str(data['credentials']['email']).strip()
+        uid        = str(data['credentials']['uid']).strip()
+        password   = str(data['credentials']['password']).strip()
 
     try:
         company = Company.objects.filter(id=company_id).values('id', 'razon', 'cif', 'person_name', 'email', 'emailcompany', 'uid', 'password', 'tlf', 'tlf2', 'country', 'city', 'zipcode', 'province', 'address', 'price').first()
@@ -33,7 +40,6 @@ def user_auth(request):
             return [True, company]
         else: 
             return [None, None]
-        
     except Exception as e:
         return [None, None]
     

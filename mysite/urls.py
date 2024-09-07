@@ -21,6 +21,6 @@ from invoice.controllers import login_controller, registrer_controller, invoice_
 urlpatterns = [
    path('register/', registrer_controller.try_register ),
    path('login/', login_controller.try_login),
-   path('invoice/<action>/<id>', invoice_controller.invoice_actions),
+   path('invoice/<str:action>/<int:id>', invoice_controller.invoice_actions),
    path('default/<str:action>/<str:entity>/<int:id>', default_controller.default_actions),
 ]

@@ -6,7 +6,7 @@ from ..utils.util_suzdal import create_new_article, create_new_customer, json_su
 
 
 def default_actions(request, action, entity, id):
-    auth_status, company = user_auth(request)
+    auth_status, company = user_auth(request, None)
     if auth_status is None or company is None:
         return json_suzdal({'login': False, 'status':'error', 'message':'Usuario no esta logeado'})
     

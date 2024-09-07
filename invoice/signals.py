@@ -1,7 +1,6 @@
-
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from .models import Article, Document, Customer
+from .models import Article, Document, Customer, Factura
 
 # añado 1 al crear un articulo para una empresa determinada
 @receiver(post_save, sender=Article)
@@ -18,5 +17,13 @@ def actualizar_document(sender, instance, created, **kwargs):
 def actualizar_document(sender, instance, created, **kwargs):
     if created:
         document, _ = Document.objects.get_or_create(description='cliente_numero', company_id=instance.company_id) 
+        document.value += 1
+        document.save()
+
+    
+@receiver(post_save, sender=Factura)
+def actualizar_document(sender, instance, created, **kwargs):
+    if created:
+        document, _ = Document.objects.get_or_create(description=instance.tipo_factura, company_id=instance.company_id, ejercicio=instance.ejercicio) 
         document.value += 1
         document.save()

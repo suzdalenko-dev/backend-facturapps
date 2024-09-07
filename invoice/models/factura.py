@@ -2,10 +2,19 @@ from django.db import models
 
 class Factura(models.Model):
     id                    = models.AutoField(primary_key=True)
-    numero                = models.BigIntegerField(null=True, unique=True)              # 1.Número de factura y, en su caso, serie.
+    company_id            = models.BigIntegerField(null=True)
+    tipo_factura          = models.CharField(max_length=3, null=True)
+    ejercicio             = models.CharField(max_length=7, null=True)
+    serie_fact            = models.CharField(max_length=22, null=True)
+    numero                = models.BigIntegerField(null=True)                           
+    serie_fact_unique     = models.CharField(max_length=22, null=True, unique=True)
+
+    customer_id           = models.BigIntegerField(null=True)
+                                                                                        # 1.Número de factura y, en su caso, serie.
+    
     fecha_expedicion      = models.CharField(max_length=33, null=True)                  # 2.Fecha de expedición.
     fecha_efecto          = models.CharField(max_length=33, null=True)
-    serie                 = models.CharField(max_length=33, null=True)                  
+            
     receptor_cif          = models.CharField(max_length=33, null=True)                  # 3.Nombre y apellidos, razón o denominación social tanto del emisor como del receptor de la factura.
     receptor_company_name = models.CharField(max_length=111, null=True)
     receptor_person_name  = models.CharField(max_length=111, null=True)
@@ -21,7 +30,6 @@ class Factura(models.Model):
     emisor_city           = models.CharField(max_length=111, null=True)                 # 8. El tipo impositivo que se aplica, así como la cuota tributaria.
     emisor_address        = models.CharField(max_length=111, null=True)                 # 9. La fecha en la que se hayan efectuado las operaciones siempre que se trate de una fecha distinta a la de expedición de la factura.
 
-    company_id            = models.BigIntegerField(null=True)
     
     vencimiento      = models.CharField(max_length=33, null=True)
     forma_pago       = models.CharField(max_length=111, default="CONTADO")
@@ -62,9 +70,9 @@ class Factura(models.Model):
     total            = models.DecimalField(max_digits=11, decimal_places=2, default=0)
 
     labour_hours     = models.DecimalField(max_digits=11, decimal_places=2, null=True)
-    remarks          = models.CharField(max_length=254, null=True)
-    comment_ret_rec  = models.CharField(max_length=254, null=True)
-    ejercicio        = models.CharField(max_length=7, null=True)
+    observacion      = models.CharField(max_length=254, null=True)
+    comentario      = models.CharField(max_length=254, null=True)
+    
 
 
     class Meta:
