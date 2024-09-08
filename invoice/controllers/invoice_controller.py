@@ -66,7 +66,7 @@ def invoice_actions(request, action, id):
 
             # Base Imponible = Precio del artículo × Cantidad de artículos
             for linea in lineas:
-                print("linea===")
+                print("---------------------------------------------------------------------------------")
                 description = str(linea.get('description', 'none')).strip()
                 idArticle1  = str(linea.get('idArticle1', '')).strip()
                 precio1     = float(linea.get('precio1', 0))
@@ -94,6 +94,12 @@ def invoice_actions(request, action, id):
                         d['valor'] += valor_iva
 
             # ahora el calculo de mano de obra
+            canridadManoObra = data['manoObra']['canridadManoObra']
+            precioManoObra   = data['manoObra']['precioManoObra']
+            descManoObr      = data['manoObra']['descManoObr']
+            valorIvaManoObra = data['manoObra']['valorIvaManoObra']
+            tipoIvaManoObra  = data['manoObra']['tipoIvaManoObra']
+
 
             factura.save()
             

@@ -70,7 +70,7 @@ class Factura(models.Model):
     subtotal         = models.DecimalField(max_digits=11, decimal_places=2, default=0)
     total            = models.DecimalField(max_digits=11, decimal_places=2, default=0)
 
-    labour_hours     = models.DecimalField(max_digits=11, decimal_places=2, null=True)
+  
     observacion      = models.CharField(max_length=254, null=True)
     comentario      = models.CharField(max_length=254, null=True)
     

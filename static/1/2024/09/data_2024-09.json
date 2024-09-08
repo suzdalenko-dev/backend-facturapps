@@ -2,46 +2,33 @@
     "lineas": [
         {
             "numLine": "0",
-            "idArticle1": "6",
-            "description": "Segundo Art\u00edculo",
-            "cantidad1": "1",
-            "precio1": "200",
-            "descPorc": "0",
-            "imp1Bruto": 200,
-            "desc1Valor": 0,
-            "importe1": 200,
-            "ivaPorcent": "21",
-            "ivaValLin1": 42,
-            "ivaType": "21"
-        },
-        {
-            "numLine": "1",
             "idArticle1": "",
-            "description": "xxxx",
-            "cantidad1": "10",
-            "precio1": "10",
+            "description": "111111111111111",
+            "cantidad1": "1",
+            "precio1": "1",
             "descPorc": "0",
-            "imp1Bruto": 100,
+            "imp1Bruto": 1,
             "desc1Valor": 0,
-            "importe1": 100,
+            "importe1": 1,
             "ivaPorcent": "21",
-            "ivaValLin1": 21,
+            "ivaValLin1": 0.21,
             "ivaType": "21"
         }
     ],
     "manoObra": {
-        "canridadManoObra": "",
+        "canridadManoObra": "1",
         "precioManoObra": "35.00",
-        "importeBrutoManoObra": 0,
+        "importeBrutoManoObra": 35,
         "descManoObr": 0,
-        "importeManoObra": 0,
-        "ivaPorcentManoOb": "21",
-        "valorIvaManoObra": 0
+        "importeManoObra": 35,
+        "ivaPorcentManoOb": 0,
+        "valorIvaManoObra": 0,
+        "tipoIvaManoObra": "0EXENTO"
     },
     "factura": {
-        "idSubTotal": 300,
-        "idIvaTotal": 63,
-        "idTotalFactura": 363,
+        "idSubTotal": 36,
+        "idIvaTotal": 0.21,
+        "idTotalFactura": 36.21,
         "selectTypeInvoice": "O"
     },
     "cliente": {
