@@ -1,0 +1,85 @@
+{
+    "lineas": [
+        {
+            "numLine": "0",
+            "idArticle1": "6",
+            "description": "Segundo Art\u00edculo",
+            "cantidad1": "1",
+            "precio1": "200",
+            "descPorc": "0",
+            "imp1Bruto": 200,
+            "desc1Valor": 0,
+            "importe1": 200,
+            "ivaPorcent": "21",
+            "ivaValLin1": 42,
+            "ivaType": "21"
+        },
+        {
+            "numLine": "1",
+            "idArticle1": "",
+            "description": "xxxx",
+            "cantidad1": "10",
+            "precio1": "10",
+            "descPorc": "0",
+            "imp1Bruto": 100,
+            "desc1Valor": 0,
+            "importe1": 100,
+            "ivaPorcent": "21",
+            "ivaValLin1": 21,
+            "ivaType": "21"
+        }
+    ],
+    "manoObra": {
+        "canridadManoObra": "",
+        "precioManoObra": "35.00",
+        "importeBrutoManoObra": 0,
+        "descManoObr": 0,
+        "importeManoObra": 0,
+        "ivaPorcentManoOb": "21",
+        "valorIvaManoObra": 0
+    },
+    "factura": {
+        "idSubTotal": 300,
+        "idIvaTotal": 63,
+        "idTotalFactura": 363,
+        "selectTypeInvoice": "O"
+    },
+    "cliente": {
+        "clientIdDeveloper": "1",
+        "clientNumber": "1",
+        "clienteRazon": "Google Cliente"
+    },
+    "vehicle": {
+        "inputVehicleMatricula": "",
+        "inputVehicleMarca": ""
+    },
+    "desglose": [
+        {
+            "iva": 21,
+            "valor": 0
+        },
+        {
+            "iva": 10,
+            "valor": 0
+        },
+        {
+            "iva": 4,
+            "valor": 0
+        },
+        {
+            "iva": 0,
+            "valor": 0
+        },
+        {
+            "iva": "0EXENTO",
+            "valor": 0
+        }
+    ],
+    "credentials": {
+        "company_id": "1",
+        "email": "suzdalenko@gmail.com",
+        "cif": "X4207693G",
+        "uid": "1725533351",
+        "password": "123456"
+    }
+}

@@ -27,6 +27,7 @@ class Factura(models.Model):
     emisor_person_name    = models.CharField(max_length=111, null=True)                 # 5. Domicilio del emisor y del receptor.
     emisor_pais           = models.CharField(max_length=111, null=True)                 # 6. Descripción de las operaciones para determinar la base imponible del impuesto.
     emisor_zip_code       = models.CharField(max_length=111, null=True)                 # 7. Precio unitario de las operaciones. Es decir, sin incluir impuestos.
+    emisor_provice        = models.CharField(max_length=111, null=True)
     emisor_city           = models.CharField(max_length=111, null=True)                 # 8. El tipo impositivo que se aplica, así como la cuota tributaria.
     emisor_address        = models.CharField(max_length=111, null=True)                 # 9. La fecha en la que se hayan efectuado las operaciones siempre que se trate de una fecha distinta a la de expedición de la factura.
 

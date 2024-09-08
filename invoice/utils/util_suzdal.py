@@ -78,7 +78,6 @@ def create_new_article(request):
     article     = None
     try:
         article  = Article.objects.create(description=description, company_id=company_id, price=price, ivatype=ivatype, iva=iva)
-        print(article)
         document = Document.objects.filter(company_id=company_id, description= 'articulo_numero').values('value').first() 
         article.artcode = document['value']
         article.save()
@@ -159,3 +158,25 @@ def update_old_article(request, id):
             return None
     except Exception as e:
         return None
+    
+
+
+def factura_new_article(description, company_id, precio1, ivaType, ivaPorcent):
+    if ivaType == '0EXENTO':
+        ivaType = 'exento'
+    else:
+        ivaType = 'norm'
+ 
+    try:
+        article  = Article.objects.create(description=description, company_id=company_id, price=precio1, ivatype=ivaType, iva=ivaPorcent)
+        document = Document.objects.filter(company_id=company_id, description= 'articulo_numero').values('value').first() 
+        article.artcode = document['value']
+        article.save()
+        if article.id > 0:
+            return [True, article]
+        else:
+            return [None, None]
+    except Exception as e:
+        if article is not None:
+            article.delete()
+        return [None, None]
