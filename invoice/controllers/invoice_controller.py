@@ -5,7 +5,7 @@ from invoice.models.document import Document
 from invoice.models.factura import Factura
 from invoice.utils.time_suzdal import current_date, wr_invoice_in_thread, wr_invoice_to_file
 from mysite import settings
-from ..utils.util_suzdal import factura_new_article, json_suzdal, user_auth
+from ..utils.util_suzdal import factura_new_article, factura_new_lines, json_suzdal, user_auth
 import json, os
 from datetime import datetime
 
@@ -62,7 +62,10 @@ def invoice_actions(request, action, id):
             factura.emisor_city           = company['city']
             factura.emisor_address        = company['address']
 
-            
+            SUBTOTAL_FACTURA = 0
+            IMP_IVAS_FACTURA = 0
+            TOTAL_FACTURA    = 0
+            LINEAS_FACTURA   = []
 
             # Base Imponible = Precio del artículo × Cantidad de artículos
             for linea in lineas:
@@ -73,37 +76,71 @@ def invoice_actions(request, action, id):
                 cantidad1   = float(linea.get('cantidad1', 0))
                 descPorc    = float(linea.get('descPorc', 0))
                 ivaPorcent  = float(linea.get('ivaPorcent', 0))
-                ivaType     = str(linea.get('ivaType', '0'))
+                ivaTypeStr     = str(linea.get('ivaType', '0'))
 
                 if idArticle1.isdigit():  # Comprobar si es un número válido
                     articulo_current = Article.objects.filter(id=idArticle1, company_id=company['id']).first()
                 else:
-                    art_created, articulo_current = factura_new_article(description, company['id'], precio1, ivaType, ivaPorcent)
+                    art_created, articulo_current = factura_new_article(description, company['id'], precio1, ivaTypeStr, ivaPorcent)
                     if art_created is None or articulo_current is None:
                         return json_suzdal({'status':'error', 'message':'Error al crear arículo nuevo'})
 
                 importe_inicio        = cantidad1 * precio1
                 valor_descuento       = descPorc / 100 * importe_inicio
                 importe_con_descuento = importe_inicio - valor_descuento
+                SUBTOTAL_FACTURA     += importe_con_descuento
                 valor_iva             = ivaPorcent / 100 * importe_con_descuento
+                IMP_IVAS_FACTURA      += valor_iva
                 importe_final         = importe_con_descuento + valor_iva
+                TOTAL_FACTURA        += importe_final
 
                 print(str(importe_inicio)+" "+str(valor_descuento)+" "+str(importe_con_descuento)+" "+str(valor_iva)+" importe_final="+str(importe_final))
                 for d in desglose:
-                    if str(d['iva']) == ivaType:
+                    if str(d['iva']) == ivaTypeStr:
                         d['valor'] += valor_iva
+                
+                linea_factura = {'invoice_id':0, 'serie': '', 'company_id':company['id'], 'article_id':articulo_current.id, 'article_num':articulo_current.artcode, 'article_name':articulo_current.description, 'cantidad':cantidad1, 'precio':precio1, 'descuento':descPorc, 'iva_porcent':ivaPorcent, 'iva_type':ivaTypeStr}
+                LINEAS_FACTURA.append(linea_factura)
 
             # ahora el calculo de mano de obra
-            canridadManoObra = data['manoObra']['canridadManoObra']
-            precioManoObra   = data['manoObra']['precioManoObra']
-            descManoObr      = data['manoObra']['descManoObr']
-            valorIvaManoObra = data['manoObra']['valorIvaManoObra']
-            tipoIvaManoObra  = data['manoObra']['tipoIvaManoObra']
+            canridadManoObra = float(data['manoObra']['canridadManoObra'])
+            precioManoObra   = float(data['manoObra']['precioManoObra'])
+            descManoObr      = float(data['manoObra']['descManoObr'])
+            valorIvaManoObra = float(data['manoObra']['valorIvaManoObra'])
+            tipoIvaManoObra  = str(data['manoObra']['tipoIvaManoObra'])
 
+            # cuando existe mano de obra
+            if canridadManoObra > 0 and precioManoObra > 0:
+                importe_inicio_mo        = canridadManoObra * precioManoObra
+                valor_descuento_mo       = descManoObr / 100 * importe_inicio_mo
+                importe_con_descuento_mo = importe_inicio_mo - valor_descuento_mo
+                SUBTOTAL_FACTURA        += importe_con_descuento_mo
+                valor_iva_mo             = valorIvaManoObra / 100 * importe_con_descuento_mo
+                IMP_IVAS_FACTURA         += valor_iva_mo
+                importe_final_mo         = importe_con_descuento_mo + valor_iva_mo
+                TOTAL_FACTURA           += importe_final_mo
 
+                for d in desglose:
+                    if str(d['iva']) == tipoIvaManoObra:
+                        d['valor'] += valor_iva_mo
+
+            factura.ivas_desglose = json.dumps(desglose)
+            factura.subtotal      = SUBTOTAL_FACTURA
+            factura.importe_ivas  = IMP_IVAS_FACTURA
+            factura.total         = TOTAL_FACTURA
+            factura.total2        = SUBTOTAL_FACTURA + IMP_IVAS_FACTURA
             factura.save()
             
+            # pongo a las lineas de iva ID de la factura
+            for linea_fac in LINEAS_FACTURA:
+                linea_fac['invoice_id'] = factura.id
+                linea_fac['serie']      = factura.serie_fact_unique
+
+            linea_creada = factura_new_lines(LINEAS_FACTURA)
+            # if linea_creada == 0: x = 11 / 0
+
             print(desglose)
+            print(len(factura.ivas_desglose))
             
             if factura.id > 0:
                 pass
@@ -116,8 +153,6 @@ def invoice_actions(request, action, id):
             return json_suzdal({'status':'error', 'message':str(e)})
         
 
-        lineas    = data.get('lineas', [])
-        mano_obra = data.get('manoObra', {})
         factura   = data.get('factura', {})
         print(factura)    
               

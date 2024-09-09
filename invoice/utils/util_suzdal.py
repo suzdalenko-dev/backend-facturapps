@@ -6,6 +6,8 @@ from invoice.models.customer import Customer
 from invoice.models.document import Document
 from copy import deepcopy
 
+from invoice.models.facturalineas import Facturalineas
+
 
 def json_suzdal(response_data):
     response = JsonResponse(response_data)
@@ -180,3 +182,26 @@ def factura_new_article(description, company_id, precio1, ivaType, ivaPorcent):
         if article is not None:
             article.delete()
         return [None, None]
+    
+
+
+def factura_new_lines(lineas_factura):
+    for linea in lineas_factura:
+        tipo_iva_string = 'norm'
+        if linea['iva_type'] == '0EXENTO':
+            tipo_iva_string = 'exento'
+        try:
+            linea_factura = Facturalineas.objects.create(invoice_id=linea['invoice_id'], company_id=linea['company_id'], serie=linea['serie'])
+            linea_factura.article_id   = linea['article_id']
+            linea_factura.article_num  = linea['article_num']
+            linea_factura.article_name = linea['article_name']
+            linea_factura.cantidad     = linea['cantidad']
+            linea_factura.precio       = linea['precio']
+            linea_factura.descuento    = linea['descuento']
+            linea_factura.iva_porcent  = linea['iva_porcent']
+            linea_factura.iva_type     = tipo_iva_string
+            linea_factura.save()
+            return linea_factura.id
+        except Exception as e:
+            print(str(e))
+            return 0

@@ -4,13 +4,18 @@ class Facturalineas(models.Model):
     id           = models.AutoField(primary_key=True)
     invoice_id   = models.BigIntegerField(null=True)
     company_id   = models.BigIntegerField(null=True)
+    serie        =  models.CharField(max_length=22, null=True)
 
     article_id   = models.BigIntegerField(null=True)
-    article_name = models.CharField(max_length=111, null=True)
-    quantity     = models.PositiveIntegerField()
-    unit_price   = models.DecimalField(max_digits=11, decimal_places=2)
-    amount       = models.DecimalField(max_digits=11, decimal_places=2)
+    article_num  = models.BigIntegerField(null=True)
+    article_name = models.CharField(max_length=254, null=True)
+    cantidad     = models.DecimalField(max_digits=11, decimal_places=2, null=True)
+    precio       = models.DecimalField(max_digits=11, decimal_places=2, null=True)
+    descuento    = models.DecimalField(max_digits=11, decimal_places=2, null=True)
+    iva_porcent  = models.DecimalField(max_digits=11, decimal_places=2, null=True)
+    iva_type     = models.CharField(max_length=11, null=True)
 
+    
 
     class Meta:
         indexes = [

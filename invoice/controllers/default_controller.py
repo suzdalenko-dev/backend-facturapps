@@ -14,7 +14,7 @@ def default_actions(request, action, entity, id):
         response = []
 
         if action == 'get' and entity == 'factura':
-            facturas = Factura.objects.filter(company_id=company['id']).order_by('-id').values('id', 'numero', 'fecha_expedicion', 'receptor_cif', 'total')
+            facturas = Factura.objects.filter(company_id=company['id']).order_by('-id').values('id', 'fecha_expedicion', 'serie_fact', 'receptor_company_name', 'subtotal', 'importe_ivas', 'total')
             response = list(facturas)
     
         elif action == 'get' and entity == 'cliente':

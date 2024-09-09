@@ -2,22 +2,22 @@
     "lineas": [
         {
             "numLine": "0",
-            "idArticle1": "76",
-            "description": "Filtro de aceite",
+            "idArticle1": "5",
+            "description": "Palier",
             "cantidad1": "1",
-            "precio1": "50.00",
+            "precio1": "10.00",
             "descPorc": "0",
-            "imp1Bruto": 50,
+            "imp1Bruto": 10,
             "desc1Valor": 0,
-            "importe1": 50,
+            "importe1": 10,
             "ivaPorcent": "21",
-            "ivaValLin1": 10.5,
+            "ivaValLin1": 2.1,
             "ivaType": "21"
         }
     ],
     "manoObra": {
         "canridadManoObra": 0,
-        "precioManoObra": "50.00",
+        "precioManoObra": "35.00",
         "importeBrutoManoObra": 0,
         "descManoObr": 0,
         "importeManoObra": 0,
@@ -26,13 +26,13 @@
         "tipoIvaManoObra": "21"
     },
     "factura": {
-        "idSubTotal": 50,
-        "idIvaTotal": 10.5,
-        "idTotalFactura": 60.5,
+        "idSubTotal": 10,
+        "idIvaTotal": 2.1,
+        "idTotalFactura": 12.1,
         "selectTypeInvoice": "O"
     },
     "cliente": {
-        "clientIdDeveloper": "1",
+        "clientIdDeveloper": "2",
         "clientNumber": "1",
         "clienteRazon": "Google Company"
     },
@@ -63,10 +63,10 @@
         }
     ],
     "credentials": {
-        "company_id": "1",
+        "company_id": "2",
         "email": "suzdalenko@gmail.com",
         "cif": "X4207693G",
-        "uid": "1725865204",
+        "uid": "1725355442",
         "password": "svoboda2019"
     }
 }
