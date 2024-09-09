@@ -40,8 +40,8 @@ def invoice_actions(request, action, id):
             factura  = Factura.objects.create(company_id=company['id'], tipo_factura=tipo_factura, ejercicio=ejercicio)
             document = Document.objects.filter(company_id=company['id'], description=tipo_factura, ejercicio=ejercicio).values('value').first() 
             factura.numero                = document['value']
-            factura.serie_fact            = f"{tipo_factura}/{ejercicio}/{factura.numero}"
-            factura.serie_fact_unique     = f"{tipo_factura}/{ejercicio}/{factura.numero}/{company['id']}"
+            factura.serie_fact            = f"{tipo_factura}-{ejercicio}-{factura.numero}"
+            factura.serie_fact_unique     = f"{tipo_factura}-{ejercicio}-{factura.numero}-{company['id']}"
             factura.fecha_expedicion      = current_date()
             
             factura.customer_id           = customer.id

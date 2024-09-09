@@ -34,9 +34,9 @@ def wr_invoice_in_thread(data):
 def wr_invoice_to_file(data):
     company_id   = data['credentials']['company_id']
     current_time = datetime.now()
-    year  = current_time.strftime('%Y')
-    month = current_time.strftime('%m')
-    day   = current_time.strftime('%d')
+    year  = str(current_time.strftime('%Y'))
+    month = str(current_time.strftime('%m'))
+    day   = str(current_time.strftime('%d'))
     folder_path = os.path.join(settings.STATICFILES_DIRS[0], company_id, year, month)
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
