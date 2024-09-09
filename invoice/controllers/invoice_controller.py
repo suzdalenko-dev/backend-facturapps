@@ -45,22 +45,8 @@ def invoice_actions(request, action, id):
             factura.fecha_expedicion      = current_date()
             
             factura.customer_id           = customer.id
-            factura.receptor_cif          = customer.cif_nif
+            factura.customer_num          = customer.clientcode
             factura.receptor_company_name = customer.razon
-            factura.receptor_person_name  = customer.person_name
-            factura.receptor_pais         = customer.country
-            factura.receptor_zip_code     = customer.zipcode
-            factura.receptor_city         = customer.city
-            factura.receptor_address      = customer.address
-
-            factura.emisor_cif            = company['cif']
-            factura.emisor_company_name   = company['razon']
-            factura.emisor_person_name    = company['person_name']
-            factura.emisor_pais           = company['country']
-            factura.emisor_zip_code       = company['zipcode']
-            factura.emisor_provice        = company['province']
-            factura.emisor_city           = company['city']
-            factura.emisor_address        = company['address']
 
             SUBTOTAL_FACTURA = 0
             IMP_IVAS_FACTURA = 0

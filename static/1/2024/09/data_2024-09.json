@@ -1,0 +1,72 @@
+{
+    "lineas": [
+        {
+            "numLine": "0",
+            "idArticle1": "78",
+            "description": "Palier",
+            "cantidad1": "1",
+            "precio1": "2.00",
+            "descPorc": "0",
+            "imp1Bruto": 2,
+            "desc1Valor": 0,
+            "importe1": 2,
+            "ivaPorcent": "21",
+            "ivaValLin1": 0.42,
+            "ivaType": "21"
+        }
+    ],
+    "manoObra": {
+        "canridadManoObra": 0,
+        "precioManoObra": "50.00",
+        "importeBrutoManoObra": 0,
+        "descManoObr": 0,
+        "importeManoObra": 0,
+        "ivaPorcentManoOb": "21",
+        "valorIvaManoObra": 0,
+        "tipoIvaManoObra": "21"
+    },
+    "factura": {
+        "idSubTotal": 2,
+        "idIvaTotal": 0.42,
+        "idTotalFactura": 2.42,
+        "selectTypeInvoice": "O"
+    },
+    "cliente": {
+        "clientIdDeveloper": "1",
+        "clientNumber": "1",
+        "clienteRazon": "Google Company"
+    },
+    "vehicle": {
+        "inputVehicleMatricula": "",
+        "inputVehicleMarca": ""
+    },
+    "desglose": [
+        {
+            "iva": 21,
+            "valor": 0
+        },
+        {
+            "iva": 10,
+            "valor": 0
+        },
+        {
+            "iva": 4,
+            "valor": 0
+        },
+        {
+            "iva": 0,
+            "valor": 0
+        },
+        {
+            "iva": "0EXENTO",
+            "valor": 0
+        }
+    ],
+    "credentials": {
+        "company_id": "1",
+        "email": "suzdalenko@gmail.com",
+        "cif": "74095018N",
+        "uid": "1725865204",
+        "password": "svoboda2019"
+    }
+}

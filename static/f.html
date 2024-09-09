@@ -4,19 +4,42 @@
             *{
                 font-family:Verdana, Geneva, Tahoma, sans-serif;
                 margin: 0; padding: 0;
-                font-size: 17px;
+                font-size: 13px;
             }
             h1{
-                font-size: 13px;
+                font-size: 17px;
+            }
+            td, tr{
+                margin-left: 4px; margin-right: 4px; padding-top: 2px;
             }
         </style>
         <div style="width: 100%;">
-            <table style="width: 100%;">
+            <table style="width: 100%; border: 1px solid rgb(233, 233, 255);">
                 <tbody>
                     <tr>
-                        <td><h1>FACTURA</h1><h1></h1><img src="https://suzdalenko-dev.web.app/assets/img/x.jpg" width="111px"></td>
-                        <td>a la derecha de la foto <br> sdfsdf sdf sdf sdf sd<br> asdfasdf<br> asdfasdf<br> sasdfasd<br>sdsdfsd<br>sdfsdfsd</td>
-                        <td>a la derecha de la foto <br> sdfsdf sdf sdf sdf sd<br> asdfasdf<br> asdfasdf<br> sasdfasd<br>sdsdfsd<br>sdfsdfsd</td>
+                        <td>
+                            <h1>FACTURA @tipo_factura@</h1>
+                            Numero: @numero_factura@<br>
+                            Fecha: @fecha_factura@
+                        </td>
+                        <td>
+                      
+                            <b>Emisor</b><br>
+                            @razon@<br>
+                            @person_name@<br>
+                            @province@, @city@<br>
+                            @zipcode@ @address@<br>
+                            NIF: @cif@ TEL: @tlf@
+                        </td>
+                        <td>
+                       
+                            <b>Cliente</b><br>
+                            Cod. cliente @customer_num@ CIF<br>
+                            @person_name@<br>
+                            @province@, @city@<br>
+                            @zipcode@ @address@<br>
+                            NIF: @cif@ TEL: @tlf@
+                        </td>
                     </tr>
                 </tbody>
             </table>

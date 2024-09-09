@@ -37,11 +37,11 @@ def wr_invoice_to_file(data):
     year  = str(current_time.strftime('%Y'))
     month = str(current_time.strftime('%m'))
     day   = str(current_time.strftime('%d'))
-    folder_path = os.path.join(settings.STATICFILES_DIRS[0], company_id, year, month)
+    folder_path = f"static/{str(company_id)}/{year}/{month}/"
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
-    # file_name = f"data_{current_time.strftime('%Y-%m-%d_%H-%M-%S')}.json"
+  
     file_name = f"data_{current_time.strftime('%Y-%m')}.json"
-    file_path = os.path.join(folder_path, file_name)
+    file_path = folder_path+file_name
     with open(file_path, 'w') as json_file:
         json.dump(data, json_file, indent=4)
