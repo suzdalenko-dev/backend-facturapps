@@ -47,10 +47,15 @@ def pdf_work(request, action, id):
         html = html.replace('@tlf@', company['tlf'])
         
         html = html.replace('@customer_num@', str(facturaObj.customer_num))
-        # html = html.replace('@razon@', facturaObj.razon)
-        # html = html.replace('@razon@', facturaObj.razon)
-        # html = html.replace('@razon@', facturaObj.razon)
-        # html = html.replace('@razon@', facturaObj.razon)
+        html = html.replace('@razon_cl@', customerObj.razon)
+        html = html.replace('@person_name_cl@', customerObj.person_name)
+        html = html.replace('@province_cl@', customerObj.province)
+        html = html.replace('@city_cl@', customerObj.city)
+        html = html.replace('@zipcode_cl@', customerObj.zipcode)
+        html = html.replace('@address_cl@', customerObj.address)
+        html = html.replace('@cif_nif@', customerObj.cif_nif)
+        html = html.replace('@phone@', customerObj.phone)
+        html = html.replace('@country@', customerObj.country)
         print(html)
 
         with open(file_path, "wb") as pdf_file:

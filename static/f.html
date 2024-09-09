@@ -1,18 +1,56 @@
 <html>
-    <body>
-        <style>
-            *{
-                font-family:Verdana, Geneva, Tahoma, sans-serif;
-                margin: 0; padding: 0;
-                font-size: 13px;
-            }
-            h1{
-                font-size: 17px;
-            }
-            td, tr{
-                margin-left: 4px; margin-right: 4px; padding-top: 2px;
-            }
-        </style>
+<head>
+<style>
+    @page {
+        size: a4 portrait;
+        @frame header_frame {           /* Static Frame */
+            -pdf-frame-content: header_content;
+            left: 5pt; width: 585pt; top: 5pt; height: 340pt;
+        }
+        @frame content_frame {          /* Content Frame */
+            left: 5pt; width: 585pt; top: 111pt; height: 400pt;
+        }
+        @frame footer_frame {           /* Another static Frame */
+            -pdf-frame-content: footer_content;
+            left: 5pt; width: 585pt; bottom: 1pt; height: 330pt;
+        }
+    }
+    #footer_content{
+        background-color: ;
+    }
+    .div_vehicle{
+        background-color: #4e73df; color:white; margin-top: 11px; display: block;
+    }
+    .thead{
+        background-color: #4e73df; color:white;
+    }
+    *{
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        margin: 0; padding: 0;
+        font-size: 12px;
+    }
+    h1{
+        font-size: 16px;
+    }
+    td, tr{
+        margin-left: 4px; margin-right: 4px; padding-top: 3px;
+    }
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 50px; /* Altura del pie de página */
+        border-top: 1px solid black;
+    }
+    .datos_vehicle{
+        padding-top: 3px; display: block; padding-bottom: -3px;
+    }
+</style>
+</head>
+
+<body>
+    <!-- Content for Static Frame 'header_frame' -->
+    <div id="header_content">
         <div style="width: 100%;">
             <table style="width: 100%; border: 1px solid rgb(233, 233, 255);">
                 <tbody>
@@ -23,7 +61,6 @@
                             Fecha: @fecha_factura@
                         </td>
                         <td>
-                      
                             <b>Emisor</b><br>
                             @razon@<br>
                             @person_name@<br>
@@ -32,18 +69,81 @@
                             NIF: @cif@ TEL: @tlf@
                         </td>
                         <td>
-                       
                             <b>Cliente</b><br>
-                            Cod. cliente @customer_num@ CIF<br>
-                            @person_name@<br>
-                            @province@, @city@<br>
-                            @zipcode@ @address@<br>
-                            NIF: @cif@ TEL: @tlf@
+                            #@customer_num@ CIF: @cif_nif@ @razon_cl@<br>
+                            @person_name_cl@<br>
+                            @zipcode_cl@ @address_cl@ @country@<br>
+                            @province_cl@, @city_cl@<br>
+                            TEL: @phone@
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+    </div>
+
+    <!-- HTML Content -->
+    <div id="page_content">
+        <div class="div_vehicle">
+            <span class="datos_vehicle">DATOS DEL VEHICULO</span>
+            <table style="border: 1px solid rgb(233, 233, 255); color: black;">
+                <tbody>
+                    <tr>
+                        <td>
+                            Matricula<br>@matricula@
+                        </td>
+                        <td>
+                            Marca / Modelo / Kilometros<br>@marca_modelo_km@
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div><br>
+        <div>
+            <table style="border: 1px solid rgb(233, 233, 255); color: black;">
+                <tbody>
+                    <tr><td>Codigo Art</td> <td style="width: 333px;">Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr>
+                    <tr><td>Codigo Art.</td><td style="width: 333px;">Descripcion Descripcion Descripcion Descripcion Descripcion Descripcion Descripcion Descripcion Descripcion Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr>
+                    <tr><td>Codigo Art.</td><td style="width: 333px;">Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr>
+                    <tr><td>Codigo Art.</td><td style="width: 333px;">Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr>
+                    <tr><td>Codigo Art.</td><td style="width: 333px;">Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr>
+                    <tr><td>Codigo Art.</td><td style="width: 333px;">Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr><tr><td>Codigo Art.</td><td>Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr>
+                </tbody>
+            </table>
+        </div>
+   </div>
+
+    <!-- Content for Static Frame 'footer_frame' -->
+    <div id="footer_content">
+        <br>
+        <table>
+            <tr>
+                <td style="width: 380px;">
+                    <table><tr><td style="background-color: #4e73df; color:white;">Base imponible</td><td style="background-color: #4e73df; color:white;">I.V.A</td><td style="background-color: #4e73df; color:white;">R.E</td></tr></table>
+
+                    <table style="border: 1px solid rgb(233, 233, 255); color: black;"> <tr><td>        </td> <td>%       </td>  <td>Importe</td> <td>%</td>    <td>Importe</td></tr></table>
+                    <table style="border: 1px solid rgb(233, 233, 255); color: black;"> <tr><td>3.719,01</td> <td>21,00   </td>  <td>1312   </td> <td>5,20</td> <td>0,00   </td></tr></table>
+                    <table style="border: 1px solid rgb(233, 233, 255); color: black;"> <tr><td>0,00    </td> <td>10,00   </td>  <td>0,00   </td> <td>1,40</td> <td>0,00   </td></tr></table>
+                    <table style="border: 1px solid rgb(233, 233, 255); color: black;"> <tr><td>0,00    </td> <td>4,00    </td>  <td>0,00   </td> <td>0,50</td> <td>0,00   </td></tr></table>
+                    <table style="border: 1px solid rgb(233, 233, 255); color: black;"> <tr><td>0,00    </td> <td>0,00    </td>  <td>0,00   </td> <td>0,00</td> <td>0,00   </td></tr></table>
+                    <table style="border: 1px solid rgb(233, 233, 255); color: black;"> <tr><td>0,00    </td> <td>0-exento</td>  <td>0,00   </td> <td>0,00</td> <td>0,00   </td></tr></table>
+                </td>
+                <td>
+                    <table><tr><td style="background-color: #4e73df; color:white;"></td><td style="background-color: #4e73df; color:white;">Resumen</td><td style="background-color: #4e73df; color:white;"></td></tr></table>
+                    <table>
+                        <tr><td>Base Imponible</td><td>3.719,01</td></tr>
+                        <tr><td>I V A</td><td>719,01</td></tr>
+                        <tr><td>R.Equivalencia</td><td>0.00</td></tr>
+                        <tr><td><b>Total</b></td><td><b>4500</b></td></tr>
+                    </table>
+                    <table><tr><td></td> <td></td><td></td> <td></td> <td></td></tr></table>
+                    <table><tr><td></td> <td></td><td></td> <td></td> <td></td></tr></table>
+                </td>
+            </tr>
+        </table>
         
-    </body>
-    </html>
+        (c) - page <pdf:pagenumber>of <pdf:pagecount>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,77 @@
+<html>
+    <body>
+        <style>
+            @page {
+                size: A4;
+                margin: .5cm; 
+            }
+            *{
+                font-family:Verdana, Geneva, Tahoma, sans-serif;
+                margin: 0; padding: 0;
+                font-size: 12px;
+            */
+            h1{
+                font-size: 16px;
+            }
+            td, tr{
+                margin-left: 4px; margin-right: 4px; padding-top: 3px;
+            }
+            footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                height: 50px; /* Altura del pie de página */
+                border-top: 1px solid black;
+            }
+        </style>
+        <div style="width: 100%;">
+            <table style="width: 100%; border: 1px solid rgb(233, 233, 255);">
+                <tbody>
+                    <tr>
+                        <td>
+                            <h1>FACTURA @tipo_factura@</h1>
+                            Numero: @numero_factura@<br>
+                            Fecha: @fecha_factura@
+                        </td>
+                        <td>
+                            <b>Emisor</b><br>
+                            @razon@<br>
+                            @person_name@<br>
+                            @province@, @city@<br>
+                            @zipcode@ @address@<br>
+                            NIF: @cif@ TEL: @tlf@
+                        </td>
+                        <td>
+                            <b>Cliente</b><br>
+                            #@customer_num@ CIF: @cif_nif@ @razon_cl@<br>
+                            @person_name_cl@<br>
+                            @zipcode_cl@ @address_cl@ @country@<br>
+                            @province_cl@, @city_cl@<br>
+                            TEL: @phone@
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="margin-top: 11px;">
+            <span>DATOS DEL VEHICULO</span>
+            <table style="border: 1px solid rgb(233, 233, 255);">
+                <tbody>
+                    <tr>
+                        <td>
+                            Matricula<br>
+                            xxxx xxxx
+                        </td>
+                        <td>
+                            Marca / Modelo / Kilometros<br>
+                            BMW e30 1540000
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <footer>
+            <p>Pie de página</p>
+        </footer>
+    </body>
+    </html>
