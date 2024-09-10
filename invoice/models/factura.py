@@ -27,7 +27,7 @@ class Factura(models.Model):
                                                                                         # 9. La fecha en la que se hayan efectuado las operaciones siempre que se trate de una fecha distinta a la de expedición de la factura.
 
     
-    ivas_desglose   = models.CharField(max_length=255, null=True) 
+    ivas_desglose   = models.CharField(max_length=1000, null=True) 
    
     importe_ivas     = models.DecimalField(max_digits=11, decimal_places=2, default=0)
     subtotal         = models.DecimalField(max_digits=11, decimal_places=2, default=0)

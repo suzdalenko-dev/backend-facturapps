@@ -3,7 +3,8 @@ from invoice.models.company import Company
 from invoice.models.customer import Customer
 from invoice.models.document import Document
 from invoice.models.factura import Factura
-from invoice.utils.time_suzdal import current_date, wr_invoice_in_thread, wr_invoice_to_file
+from invoice.utils.time_suzdal import current_date, get_time_11days, wr_invoice_in_thread, wr_invoice_to_file
+from invoice.utils.vehicle_func import get_or_save_vehicle
 from mysite import settings
 from ..utils.util_suzdal import factura_new_article, factura_new_lines, json_suzdal, user_auth
 import json, os
@@ -43,10 +44,13 @@ def invoice_actions(request, action, id):
             factura.serie_fact            = f"{tipo_factura}-{ejercicio}-{factura.numero}"
             factura.serie_fact_unique     = f"{tipo_factura}-{ejercicio}-{factura.numero}-{company['id']}"
             factura.fecha_expedicion      = current_date()
+            factura.vencimiento           = get_time_11days()
             
             factura.customer_id           = customer.id
             factura.customer_num          = customer.clientcode
             factura.receptor_company_name = customer.razon
+
+            print('factura.customer_num='+str(factura.customer_num))
 
             SUBTOTAL_FACTURA = 0
             IMP_IVAS_FACTURA = 0
@@ -62,7 +66,7 @@ def invoice_actions(request, action, id):
                 cantidad1   = float(linea.get('cantidad1', 0))
                 descPorc    = float(linea.get('descPorc', 0))
                 ivaPorcent  = float(linea.get('ivaPorcent', 0))
-                ivaTypeStr     = str(linea.get('ivaType', '0'))
+                ivaTypeStr  = str(linea.get('ivaType', '0'))
 
                 if idArticle1.isdigit():  # Comprobar si es un número válido
                     articulo_current = Article.objects.filter(id=idArticle1, company_id=company['id']).first()
@@ -110,7 +114,9 @@ def invoice_actions(request, action, id):
 
                 for d in desglose:
                     if str(d['iva']) == tipoIvaManoObra:
-                        d['valor'] += valor_iva_mo
+                        d['base_imponible'] += importe_con_descuento
+                        d['valor_iva'] += valor_iva
+                        d['total_con_iva'] += d['base_imponible'] + d['valor_iva']
 
             factura.ivas_desglose = json.dumps(desglose)
             factura.subtotal      = SUBTOTAL_FACTURA
@@ -125,25 +131,27 @@ def invoice_actions(request, action, id):
                 linea_fac['serie']      = factura.serie_fact_unique
 
             linea_creada = factura_new_lines(LINEAS_FACTURA)
-            # if linea_creada == 0: x = 11 / 0
+            if linea_creada == 0: x = 11 / 0
 
-            print(desglose)
-            print(len(factura.ivas_desglose))
+
+            inputVehicleMatricula = str(data['vehicle']['inputVehicleMatricula']).strip()
+            inputVehicleMarca     = str(data['vehicle']['inputVehicleMarca']).strip()
+            if inputVehicleMatricula != '' and len(inputVehicleMatricula) > 3:
+                get_or_save_vehicle(factura.id, company['id'], customer.id, inputVehicleMatricula, inputVehicleMarca)
+                
             
             if factura.id > 0:
-                pass
+                print('factura.customer_num2='+str(factura.customer_num))
             else:
                 return json_suzdal({'status':'error', 'message':'Fallo al crear factura'})
         except Exception as e:
             if factura is not None:
                 factura.delete()
-            print('suzdal '+str(e))    
+            print('ERROR ----------------------------------------------------------------------------------------- '+str(e))    
             return json_suzdal({'status':'error', 'message':str(e)})
         
 
-        factura   = data.get('factura', {})
-        print(factura)    
-              
+
         rdata = {
             'status': 'ok',
             'message': 'Factura creada '

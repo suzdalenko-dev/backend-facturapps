@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 import json
 import os
 import threading
@@ -45,3 +45,10 @@ def wr_invoice_to_file(data):
     file_path = folder_path+file_name
     with open(file_path, 'w') as json_file:
         json.dump(data, json_file, indent=4)
+
+
+def get_time_11days():
+    current_date = datetime.now()
+    new_date = current_date + timedelta(days=11)
+    new_date_formatted = new_date.strftime('%d/%m/%Y')
+    return new_date_formatted

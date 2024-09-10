@@ -33,6 +33,7 @@ def pdf_work(request, action, id):
     
         html = html.replace('@numero_factura@', str(facturaObj.serie_fact))
         html = html.replace('@fecha_factura@', str(facturaObj.fecha_expedicion))
+        html = html.replace('@fecha_vencimiento@', str(facturaObj.vencimiento))
         tipo_factura = ''
         if facturaObj.tipo_factura == 'R': tipo_factura = 'RECTIFICATIVA'
         if facturaObj.tipo_factura == 'A': tipo_factura = 'ABONO'
