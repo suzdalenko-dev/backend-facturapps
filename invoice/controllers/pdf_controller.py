@@ -2,9 +2,10 @@ from datetime import datetime
 import json
 import os
 from xhtml2pdf import pisa
-
 from invoice.models.customer import Customer
 from invoice.models.factura import Factura
+from invoice.models.facturalineas import Facturalineas
+from invoice.models.vehicledata import Vehicledata
 from invoice.utils.time_suzdal import second_suzdal
 from mysite import settings
 from ..utils.util_suzdal import factura_new_article, factura_new_lines, json_suzdal, user_auth
@@ -17,6 +18,8 @@ def pdf_work(request, action, id):
     
         facturaObj  = Factura.objects.get(id=id, company_id=company['id'])
         customerObj = Customer.objects.get(id=facturaObj.customer_id, company_id=company['id'])
+        vehicle     = Vehicledata.objects.filter(invoice_id=id, company_id=company['id']).first()
+        lineasFact  = Facturalineas.objects.filter(invoice_id=id, company_id=company['id'])
 
         current_time = datetime.now()
         year  = str(current_time.strftime('%Y'))
@@ -57,7 +60,21 @@ def pdf_work(request, action, id):
         html = html.replace('@cif_nif@', customerObj.cif_nif)
         html = html.replace('@phone@', customerObj.phone)
         html = html.replace('@country@', customerObj.country)
-        print(html)
+        if vehicle:
+            vehicle_data = """<div class="div_vehicle">
+                    <span class="datos_vehicle">DATOS DEL VEHICULO</span>
+                    <table style="border: 1px solid rgb(233, 233, 255); color: black;">
+                        <tbody><tr><td>Matricula<br>"""+str(vehicle.matricula)+"""</td><td>Marca / Modelo / Kilometros<br>"""+str(vehicle.other_data)+"""</td></tr></tbody>
+                    </table>
+                </div><br>"""
+        else:
+            vehicle_data = ''
+        html = html.replace('@vehicle_data@', vehicle_data)
+
+        lines_content = ''
+        for linea in lineasFact:
+            lines_content += '<tr><td>A</td><td style="width: 333px;">B</td><td>C</td><td>Precio</td><td>D</td><td>F</td></tr>'
+        html = html.replace('@lines_content@', lines_content)
 
         with open(file_path, "wb") as pdf_file:
             # Convertir el HTML a PDF y guardarlo en el archivo

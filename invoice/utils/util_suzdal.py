@@ -194,13 +194,21 @@ def factura_new_lines(lineas_factura):
             linea_factura.article_id   = linea['article_id']
             linea_factura.article_num  = linea['article_num']
             linea_factura.article_name = linea['article_name']
-            linea_factura.cantidad     = linea['cantidad']
-            linea_factura.precio       = linea['precio']
-            linea_factura.descuento    = linea['descuento']
-            linea_factura.iva_porcent  = linea['iva_porcent']
+            
+            linea_factura.cantidad      = linea['cantidad']
+            linea_factura.precio        = linea['precio']
+            linea_factura.importe_bruto = linea_factura.cantidad *  linea_factura.precio
+
+            linea_factura.descuento             = linea['descuento']
+            linea_factura.descuento_val         = linea_factura.descuento / 100 * linea_factura.importe_bruto
+            linea_factura.importe_con_descuento = linea_factura.importe_bruto -  linea_factura.descuento_val
+
+            linea_factura.iva_porcent   = linea['iva_porcent']
+            linea_factura.iva_valor     = linea_factura.iva_porcent / 100 * linea_factura.importe_con_descuento
+            linea_factura.importe_res   = linea_factura.importe_con_descuento + linea_factura.iva_valor 
+
             linea_factura.iva_type     = tipo_iva_string
             linea_factura.save()
-            return linea_factura.id
+            print(linea)
         except Exception as e:
-            print(str(e))
-            return 0
+            print('ERROR-------------------------------------------'+str(e))

@@ -2,16 +2,16 @@
     "lineas": [
         {
             "numLine": "0",
-            "idArticle1": "",
-            "description": "descripcion articulo",
+            "idArticle1": "6",
+            "description": "Segundo Art\u00edculo",
             "cantidad1": "1",
-            "precio1": "35",
+            "precio1": "1",
             "descPorc": "0",
-            "imp1Bruto": 35,
+            "imp1Bruto": 1,
             "desc1Valor": 0,
-            "importe1": 35,
+            "importe1": 1,
             "ivaPorcent": "21",
-            "ivaValLin1": 7.35,
+            "ivaValLin1": 0.21,
             "ivaType": "21"
         }
     ],
@@ -26,9 +26,9 @@
         "tipoIvaManoObra": "21"
     },
     "factura": {
-        "idSubTotal": 70,
-        "idIvaTotal": 14.7,
-        "idTotalFactura": 84.69999999999999,
+        "idSubTotal": 36,
+        "idIvaTotal": 7.56,
+        "idTotalFactura": 43.56,
         "selectTypeInvoice": "O"
     },
     "cliente": {
@@ -37,8 +37,8 @@
         "clienteRazon": "Google Cliente"
     },
     "vehicle": {
-        "inputVehicleMatricula": "asdf",
-        "inputVehicleMarca": "asdf asdf asdf asdf"
+        "inputVehicleMatricula": "ggggg",
+        "inputVehicleMarca": "ggggg"
     },
     "desglose": [
         {

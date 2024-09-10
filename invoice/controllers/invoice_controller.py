@@ -84,7 +84,6 @@ def invoice_actions(request, action, id):
                 importe_final         = importe_con_descuento + valor_iva
                 TOTAL_FACTURA        += importe_final
 
-                print(str(importe_inicio)+" "+str(valor_descuento)+" "+str(importe_con_descuento)+" "+str(valor_iva)+" importe_final="+str(importe_final))
                 for d in desglose:
                     if str(d['iva']) == ivaTypeStr:
                         d['base_imponible'] += importe_con_descuento
@@ -98,7 +97,7 @@ def invoice_actions(request, action, id):
             canridadManoObra = float(data['manoObra']['canridadManoObra'])
             precioManoObra   = float(data['manoObra']['precioManoObra'])
             descManoObr      = float(data['manoObra']['descManoObr'])
-            valorIvaManoObra = float(data['manoObra']['valorIvaManoObra'])
+            ivaPorcentManoOb = float(data['manoObra']['ivaPorcentManoOb'])
             tipoIvaManoObra  = str(data['manoObra']['tipoIvaManoObra'])
 
             # cuando existe mano de obra
@@ -107,10 +106,12 @@ def invoice_actions(request, action, id):
                 valor_descuento_mo       = descManoObr / 100 * importe_inicio_mo
                 importe_con_descuento_mo = importe_inicio_mo - valor_descuento_mo
                 SUBTOTAL_FACTURA        += importe_con_descuento_mo
-                valor_iva_mo             = valorIvaManoObra / 100 * importe_con_descuento_mo
+                valor_iva_mo             = ivaPorcentManoOb / 100 * importe_con_descuento_mo
                 IMP_IVAS_FACTURA         += valor_iva_mo
                 importe_final_mo         = importe_con_descuento_mo + valor_iva_mo
                 TOTAL_FACTURA           += importe_final_mo
+                linea_factura = {'invoice_id':0, 'serie': '', 'company_id':company['id'], 'article_id':0, 'article_num':0, 'article_name':'Mano de obra', 'cantidad':canridadManoObra, 'precio':precioManoObra, 'descuento':descManoObr, 'iva_porcent':ivaPorcentManoOb, 'iva_type':tipoIvaManoObra}
+                LINEAS_FACTURA.append(linea_factura)
 
                 for d in desglose:
                     if str(d['iva']) == tipoIvaManoObra:
@@ -130,8 +131,7 @@ def invoice_actions(request, action, id):
                 linea_fac['invoice_id'] = factura.id
                 linea_fac['serie']      = factura.serie_fact_unique
 
-            linea_creada = factura_new_lines(LINEAS_FACTURA)
-            if linea_creada == 0: x = 11 / 0
+            factura_new_lines(LINEAS_FACTURA)
 
 
             inputVehicleMatricula = str(data['vehicle']['inputVehicleMatricula']).strip()
