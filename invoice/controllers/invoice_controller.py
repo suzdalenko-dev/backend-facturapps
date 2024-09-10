@@ -83,7 +83,9 @@ def invoice_actions(request, action, id):
                 print(str(importe_inicio)+" "+str(valor_descuento)+" "+str(importe_con_descuento)+" "+str(valor_iva)+" importe_final="+str(importe_final))
                 for d in desglose:
                     if str(d['iva']) == ivaTypeStr:
-                        d['valor'] += valor_iva
+                        d['base_imponible'] += importe_con_descuento
+                        d['valor_iva'] += valor_iva
+                        d['total_con_iva'] += d['base_imponible'] + d['valor_iva']
                 
                 linea_factura = {'invoice_id':0, 'serie': '', 'company_id':company['id'], 'article_id':articulo_current.id, 'article_num':articulo_current.artcode, 'article_name':articulo_current.description, 'cantidad':cantidad1, 'precio':precio1, 'descuento':descPorc, 'iva_porcent':ivaPorcent, 'iva_type':ivaTypeStr}
                 LINEAS_FACTURA.append(linea_factura)

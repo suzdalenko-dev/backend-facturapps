@@ -2,22 +2,50 @@
     "lineas": [
         {
             "numLine": "0",
-            "idArticle1": "6",
-            "description": "Segundo Art\u00edculo",
+            "idArticle1": "78",
+            "description": "Palier",
             "cantidad1": "1",
-            "precio1": "2.22",
+            "precio1": "2.00",
             "descPorc": "0",
-            "imp1Bruto": 2.22,
+            "imp1Bruto": 2,
             "desc1Valor": 0,
-            "importe1": 2.22,
+            "importe1": 2,
             "ivaPorcent": "21",
-            "ivaValLin1": 0.4662,
+            "ivaValLin1": 0.42,
             "ivaType": "21"
+        },
+        {
+            "numLine": "1",
+            "idArticle1": "78",
+            "description": "Palier",
+            "cantidad1": "10",
+            "precio1": "2.00",
+            "descPorc": "0",
+            "imp1Bruto": 20,
+            "desc1Valor": 0,
+            "importe1": 20,
+            "ivaPorcent": "21",
+            "ivaValLin1": 4.2,
+            "ivaType": "21"
+        },
+        {
+            "numLine": "2",
+            "idArticle1": "78",
+            "description": "Palier",
+            "cantidad1": "10",
+            "precio1": "2.00",
+            "descPorc": "0",
+            "imp1Bruto": 20,
+            "desc1Valor": 0,
+            "importe1": 20,
+            "ivaPorcent": "10",
+            "ivaValLin1": 2,
+            "ivaType": "10"
         }
     ],
     "manoObra": {
         "canridadManoObra": 0,
-        "precioManoObra": "35.00",
+        "precioManoObra": "50.00",
         "importeBrutoManoObra": 0,
         "descManoObr": 0,
         "importeManoObra": 0,
@@ -26,15 +54,15 @@
         "tipoIvaManoObra": "21"
     },
     "factura": {
-        "idSubTotal": 2.22,
-        "idIvaTotal": 0.4662,
-        "idTotalFactura": 2.6862000000000004,
+        "idSubTotal": 42,
+        "idIvaTotal": 6.62,
+        "idTotalFactura": 48.62,
         "selectTypeInvoice": "O"
     },
     "cliente": {
         "clientIdDeveloper": "1",
         "clientNumber": "1",
-        "clienteRazon": "Google Cliente"
+        "clienteRazon": "Google Company"
     },
     "vehicle": {
         "inputVehicleMatricula": "",
@@ -43,19 +71,27 @@
     "desglose": [
         {
             "iva": 21,
-            "valor": 0
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0
         },
         {
             "iva": 10,
-            "valor": 0
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0
         },
         {
             "iva": 4,
-            "valor": 0
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0
         },
         {
             "iva": 0,
-            "valor": 0
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0
         },
         {
             "iva": "0EXENTO",
@@ -65,8 +101,8 @@
     "credentials": {
         "company_id": "1",
         "email": "suzdalenko@gmail.com",
-        "cif": "X4207693G",
-        "uid": "1725533351",
-        "password": "123456"
+        "cif": "74095018N",
+        "uid": "1725865204",
+        "password": "svoboda2019"
     }
 }

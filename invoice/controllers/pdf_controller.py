@@ -25,7 +25,7 @@ def pdf_work(request, action, id):
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
         seconds = second_suzdal()
-        file_name = f"factura_{facturaObj.serie_fact}_{seconds}.pdf"
+        file_name = f"factura_{facturaObj.serie_fact}.pdf" # file_name = f"factura_{facturaObj.serie_fact}_{seconds}.pdf"
         file_path = folder_path+file_name
 
         with open('static/f.html', 'r') as file:
