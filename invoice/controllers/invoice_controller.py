@@ -85,6 +85,7 @@ def invoice_actions(request, action, id):
                 TOTAL_FACTURA        += importe_final
 
                 for d in desglose:
+                    print(d)
                     if str(d['iva']) == ivaTypeStr:
                         d['base_imponible'] += importe_con_descuento
                         d['valor_iva'] += valor_iva
@@ -115,8 +116,8 @@ def invoice_actions(request, action, id):
 
                 for d in desglose:
                     if str(d['iva']) == tipoIvaManoObra:
-                        d['base_imponible'] += importe_con_descuento
-                        d['valor_iva'] += valor_iva
+                        d['base_imponible'] += importe_con_descuento_mo
+                        d['valor_iva'] += valor_iva_mo
                         d['total_con_iva'] += d['base_imponible'] + d['valor_iva']
 
             factura.ivas_desglose = json.dumps(desglose)

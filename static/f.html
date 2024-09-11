@@ -57,6 +57,9 @@
         background-color: rgb(229, 159, 184);
         width: 400pt;
     }
+    .right_align{
+        text-align: right;
+    }
 </style>
 </head>
 
@@ -103,7 +106,7 @@
         <div>
             <table style="border: 1px solid rgb(233, 233, 255); color: black;">
                 <tbody>
-                    <tr><td>Codigo Art</td> <td style="width: 333px;">Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto</td><td>Importe</td></tr>
+                    <tr><td>Codigo Art.</td> <td style="width: 333px;">Descripcion</td><td>Cantidad</td><td>Precio</td><td>Dto.</td><td>Importe</td></tr>
                     @lines_content@
                 </tbody>
             </table>
@@ -115,21 +118,17 @@
         <table style="border: 1px solid rgb(233, 233, 255);">
             <tr><td colspan="2" style="background-color: #4e73df; color:white;">BASE IMPONIBLE</td><td style="background-color: #4e73df; color:white;">I.V.A</td><td colspan="2" style="background-color: #4e73df; color:white;">R.E</td>
             <tr><td>Base    </td> <td>%       </td>  <td>Importe</td> <td>%</td>    <td>Importe</td></tr>
-            <tr><td>3.719,01</td> <td>21,00   </td>  <td>1312   </td> <td>5,20</td> <td>0,00   </td></tr>
-            <tr><td>0,00    </td> <td>10,00   </td>  <td>0,00   </td> <td>1,40</td> <td>0,00   </td></tr>
-            <tr><td>0,00    </td> <td>4,00    </td>  <td>0,00   </td> <td>0,50</td> <td>0,00   </td></tr>
-            <tr><td>0,00    </td> <td>0,00    </td>  <td>0,00   </td> <td>0,00</td> <td>0,00   </td></tr>
-            <tr><td>0,00    </td> <td>0-exento</td>  <td>0,00   </td> <td>0,00</td> <td>0,00   </td></tr>
+            @html_ivas@
         </table>
     </div>
 
     <div id="col2_content">
         <table style="border: 1px solid rgb(233, 233, 255);">
             <tr><td colspan="3" style="background-color: #4e73df; color:white;">RESUMEN</td></tr>
-            <tr><td colspan="2">Base Imponible</td><td>3.719,01</td></tr>
-            <tr><td colspan="2">I V A</td><td>719,01</td></tr>
+            <tr><td colspan="2">Suma Importes</td><td>@suma_importes@</td></tr>
+            <tr><td colspan="2">I V A</td><td>@importe_ivas@</td></tr>
             <tr><td colspan="2">R.Equivalencia</td><td>0.00</td></tr>
-            <tr><td colspan="2"><b>Total factura</b></td><td><b>4500</b></td></tr>
+            <tr><td colspan="2"><b>Total factura</b></td><td><b>@factura_total@</b></td></tr>
             <tr><td colspan="3" style="height: 49px;">Firma Cliente</td></tr>
         </table>
     </div>

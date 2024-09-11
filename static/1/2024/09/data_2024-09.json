@@ -2,79 +2,114 @@
     "lineas": [
         {
             "numLine": "0",
-            "idArticle1": "6",
-            "description": "Segundo Art\u00edculo",
+            "idArticle1": "",
+            "description": "Bombilla Xenon D2S",
             "cantidad1": "1",
-            "precio1": "1",
+            "precio1": "107.14",
             "descPorc": "0",
-            "imp1Bruto": 1,
+            "imp1Bruto": 107.14,
             "desc1Valor": 0,
-            "importe1": 1,
+            "importe1": 107.14,
             "ivaPorcent": "21",
-            "ivaValLin1": 0.21,
+            "ivaValLin1": 22.499399999999998,
+            "ivaType": "21"
+        },
+        {
+            "numLine": "1",
+            "idArticle1": "",
+            "description": "Bombilla W5W",
+            "cantidad1": "1",
+            "precio1": "2",
+            "descPorc": "0",
+            "imp1Bruto": 2,
+            "desc1Valor": 0,
+            "importe1": 2,
+            "ivaPorcent": "21",
+            "ivaValLin1": 0.42,
+            "ivaType": "21"
+        },
+        {
+            "numLine": "2",
+            "idArticle1": "",
+            "description": "Montaje bombillas y arreglo deposito agua",
+            "cantidad1": "3",
+            "precio1": "35",
+            "descPorc": "0",
+            "imp1Bruto": 105,
+            "desc1Valor": 0,
+            "importe1": 105,
+            "ivaPorcent": "21",
+            "ivaValLin1": 22.05,
             "ivaType": "21"
         }
     ],
     "manoObra": {
-        "canridadManoObra": "1",
+        "canridadManoObra": 0,
         "precioManoObra": "35.00",
-        "importeBrutoManoObra": 35,
+        "importeBrutoManoObra": 0,
         "descManoObr": 0,
-        "importeManoObra": 35,
+        "importeManoObra": 0,
         "ivaPorcentManoOb": "21",
-        "valorIvaManoObra": 7.35,
+        "valorIvaManoObra": 0,
         "tipoIvaManoObra": "21"
     },
     "factura": {
-        "idSubTotal": 36,
-        "idIvaTotal": 7.56,
-        "idTotalFactura": 43.56,
+        "idSubTotal": 214.14,
+        "idIvaTotal": 44.9694,
+        "idTotalFactura": 259.1094,
         "selectTypeInvoice": "O"
     },
     "cliente": {
         "clientIdDeveloper": "1",
         "clientNumber": "1",
-        "clienteRazon": "Google Cliente"
+        "clienteRazon": "Oleg Covalencu"
     },
     "vehicle": {
-        "inputVehicleMatricula": "ggggg",
-        "inputVehicleMarca": "ggggg"
+        "inputVehicleMatricula": "",
+        "inputVehicleMarca": ""
     },
     "desglose": [
         {
             "iva": 21,
             "valor_iva": 0,
             "base_imponible": 0,
-            "total_con_iva": 0
+            "total_con_iva": 0,
+            "recec": 5.2
         },
         {
             "iva": 10,
             "valor_iva": 0,
             "base_imponible": 0,
-            "total_con_iva": 0
+            "total_con_iva": 0,
+            "recec": 1.4
         },
         {
             "iva": 4,
             "valor_iva": 0,
             "base_imponible": 0,
-            "total_con_iva": 0
+            "total_con_iva": 0,
+            "recec": 0
         },
         {
             "iva": 0,
             "valor_iva": 0,
             "base_imponible": 0,
-            "total_con_iva": 0
+            "total_con_iva": 0,
+            "recec": 0
         },
         {
             "iva": "0EXENTO",
-            "valor": 0
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
         }
     ],
     "credentials": {
         "company_id": "1",
-        "email": "suzdalenko@gmail.com",
-        "cif": "X4207693G",
-        "uid": "1725533351",
+        "email": "ursul@gmail.com",
+        "cif": "74095018N",
+        "uid": "1726041971",
         "password": "123456"
     }
 }

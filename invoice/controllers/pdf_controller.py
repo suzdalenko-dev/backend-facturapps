@@ -61,20 +61,31 @@ def pdf_work(request, action, id):
         html = html.replace('@phone@', customerObj.phone)
         html = html.replace('@country@', customerObj.country)
         if vehicle:
-            vehicle_data = """<div class="div_vehicle">
-                    <span class="datos_vehicle">DATOS DEL VEHICULO</span>
-                    <table style="border: 1px solid rgb(233, 233, 255); color: black;">
-                        <tbody><tr><td>Matricula<br>"""+str(vehicle.matricula)+"""</td><td>Marca / Modelo / Kilometros<br>"""+str(vehicle.other_data)+"""</td></tr></tbody>
-                    </table>
-                </div><br>"""
+            vehicle_data = f"""<div class="div_vehicle">
+                                    <span class="datos_vehicle">DATOS DEL VEHICULO</span>
+                                    <table style="border: 1px solid rgb(233, 233, 255); color: black;">
+                                        <tbody><tr><td>Matricula<br>{str(vehicle.matricula)}</td><td>Marca / Modelo / Kilometros<br>{str(vehicle.other_data)}</td></tr></tbody>
+                                    </table>
+                                </div><br>"""
         else:
             vehicle_data = ''
         html = html.replace('@vehicle_data@', vehicle_data)
 
         lines_content = ''
         for linea in lineasFact:
-            lines_content += '<tr><td>A</td><td style="width: 333px;">B</td><td>C</td><td>Precio</td><td>D</td><td>F</td></tr>'
+            lines_content += """<tr><td>"""+str(linea.article_num)+"""</td><td style="width: 333px;">"""+str(linea.article_name)+"""</td><td>"""+str(linea.cantidad)+"""</td><td>"""+str(linea.precio)+"""</td><td>"""+str(linea.descuento)+"""</td><td>"""+str(linea.importe_con_descuento)+"""</td></tr>"""
         html = html.replace('@lines_content@', lines_content)
+
+        html_ivas = ''
+        json_string = json.loads(facturaObj.ivas_desglose)
+        for jsonObj in json_string:
+            html_ivas +=  f"""<tr><td>{jsonObj['base_imponible']:.2f}</td><td>{jsonObj['iva']}</td><td>{jsonObj['valor_iva']:.2f}</td><td>{jsonObj['recec']:.2f}</td><td>0.00</td></tr>"""
+            print(jsonObj)
+        
+        html = html.replace('@html_ivas@', html_ivas)
+        html = html.replace('@suma_importes@', f"""{facturaObj.subtotal:.2f}""")
+        html = html.replace('@importe_ivas@', f"""{facturaObj.importe_ivas:.2f}""")
+        html = html.replace('@factura_total@', f"""{facturaObj.total:.2f}""")
 
         with open(file_path, "wb") as pdf_file:
             # Convertir el HTML a PDF y guardarlo en el archivo
