@@ -86,7 +86,7 @@ def pdf_work(request, action, id):
         html = html.replace('@suma_importes@', f"""{facturaObj.subtotal:.2f}""")
         html = html.replace('@importe_ivas@', f"""{facturaObj.importe_ivas:.2f}""")
         html = html.replace('@factura_total@', f"""{facturaObj.total:.2f}""")
-        html = html.replace('@observaciones@', facturaObj.observacion)
+        html = html.replace('@observaciones@', str(facturaObj.observacion))
 
         with open(file_path, "wb") as pdf_file:
             # Convertir el HTML a PDF y guardarlo en el archivo
