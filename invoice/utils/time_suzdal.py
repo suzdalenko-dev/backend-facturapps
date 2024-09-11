@@ -37,7 +37,7 @@ def wr_invoice_to_file(data):
     year  = str(current_time.strftime('%Y'))
     month = str(current_time.strftime('%m'))
     day   = str(current_time.strftime('%d'))
-    folder_path = f"static/{str(company_id)}/{year}/{month}/"
+    folder_path = f"media/{str(company_id)}/{year}/{month}/"
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
   

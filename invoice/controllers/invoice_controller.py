@@ -10,7 +10,7 @@ from ..utils.util_suzdal import factura_new_article, factura_new_lines, json_suz
 import json, os
 from datetime import datetime
 
-# http://127.0.0.1:8000/static/1/2024/09/07/data_2024-09-07_14-02-51.json
+# http://127.0.0.1:8000/media/1/2024/09/07/data_2024-09-07_14-02-51.json
 def invoice_actions(request, action, id):
         if request.body:
             try:
