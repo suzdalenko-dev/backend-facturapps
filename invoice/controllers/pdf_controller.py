@@ -24,14 +24,14 @@ def pdf_work(request, action, id):
         current_time = datetime.now()
         year  = str(current_time.strftime('%Y'))
         month = str(current_time.strftime('%m'))
-        folder_path = f"media/{str(company['id'])}/{year}/{month}/"
+        folder_path = f"../media/{str(company['id'])}/{year}/{month}/"
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
         seconds = second_suzdal()
         file_name = f"factura_{facturaObj.serie_fact}.pdf" # file_name = f"factura_{facturaObj.serie_fact}_{seconds}.pdf"
         file_path = folder_path+file_name
 
-        with open('media/fac.html', 'r') as file:
+        with open('../media/fac.html', 'r') as file:
             html = file.read()
     
         html = html.replace('@numero_factura@', str(facturaObj.serie_fact))
@@ -88,12 +88,13 @@ def pdf_work(request, action, id):
         html = html.replace('@factura_total@', f"""{facturaObj.total:.2f}""")
         html = html.replace('@observaciones@', str(facturaObj.observacion))
 
+        print('-----------------'+str(file_path))
+
         with open(file_path, "wb") as pdf_file:
             # Convertir el HTML a PDF y guardarlo en el archivo
             pisa_status = pisa.CreatePDF(html, dest=pdf_file)
 
         file_path = file_path.split('media')
-        print(file_path[1])
 
         rdata = {
                 'status': 'ok',
