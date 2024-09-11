@@ -125,6 +125,7 @@ def invoice_actions(request, action, id):
             factura.importe_ivas  = IMP_IVAS_FACTURA
             factura.total         = TOTAL_FACTURA
             factura.total2        = SUBTOTAL_FACTURA + IMP_IVAS_FACTURA
+            factura.observacion   = str(data['observaciones']['obstextareaid']).strip()[:251]
             factura.save()
             
             # pongo a las lineas de iva ID de la factura
@@ -141,6 +142,7 @@ def invoice_actions(request, action, id):
                 get_or_save_vehicle(factura.id, company['id'], customer.id, inputVehicleMatricula, inputVehicleMarca)
                 
             
+            
             if factura.id > 0:
                 print('factura.customer_num2='+str(factura.customer_num))
             else:
@@ -154,6 +156,7 @@ def invoice_actions(request, action, id):
 
 
         rdata = {
+            'factura_id': factura.id,
             'status': 'ok',
             'message': 'Factura creada '
         }

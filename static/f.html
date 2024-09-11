@@ -11,19 +11,19 @@
             left: 5pt;
             width: 585pt;
             top: 110pt;
-            height: 492pt;
+            height: 462pt;
         }
         @frame col1_frame {
             -pdf-frame-content: col1_content;
-            left: 5pt; width: 290pt; top: 660pt; height: 332pt;
+            left: 5pt; width: 290pt; top: 610pt; height: 332pt;
         }
         @frame col2_frame {          
             -pdf-frame-content: col2_content;
-            right: 5pt; width: 290pt; top: 660pt; height: 330pt;
+            right: 5pt; width: 290pt; top: 610pt; height: 330pt;
         }
         @frame footer_frame {           /* Another static Frame */
             -pdf-frame-content: footer_content;
-            left: 5pt; width: 585pt; top: 800pt; height: 20pt;
+            left: 5pt; width: 585pt; top: 750pt; height: 100pt;
         }
     }
     .div_vehicle{
@@ -125,16 +125,17 @@
     <div id="col2_content">
         <table style="border: 1px solid rgb(233, 233, 255);">
             <tr><td colspan="3" style="background-color: #4e73df; color:white;">RESUMEN</td></tr>
-            <tr><td colspan="2">Suma Importes</td><td>@suma_importes@</td></tr>
-            <tr><td colspan="2">I V A</td><td>@importe_ivas@</td></tr>
-            <tr><td colspan="2">R.Equivalencia</td><td>0.00</td></tr>
-            <tr><td colspan="2"><b>Total factura</b></td><td><b>@factura_total@</b></td></tr>
+            <tr><td colspan="2">Suma Importes</td><td class="right_align">@suma_importes@</td></tr>
+            <tr><td colspan="2">I V A</td><td class="right_align">@importe_ivas@</td></tr>
+            <tr><td colspan="2">R.Equivalencia</td><td class="right_align">0.00</td></tr>
+            <tr><td colspan="2"><b>Total factura</b></td><td class="right_align"><b>@factura_total@</b></td></tr>
             <tr><td colspan="3" style="height: 49px;">Firma Cliente</td></tr>
         </table>
     </div>
 
-    <div id="footer_content">(c) - Pagina <pdf:pagenumber></pdf:pagenumber>
-        de <pdf:pagecount>
+    <div id="footer_content">
+        Observaciones: @observaciones@ <br> 
+        (c) - Pagina <pdf:pagenumber></pdf:pagenumber>de <pdf:pagecount>
     </div>
 </body>
 </html>
