@@ -31,7 +31,7 @@ def pdf_work(request, action, id):
         file_name = f"factura_{facturaObj.serie_fact}.pdf" # file_name = f"factura_{facturaObj.serie_fact}_{seconds}.pdf"
         file_path = folder_path+file_name
 
-        with open('media/f.html', 'r') as file:
+        with open('media/fac.html', 'r') as file:
             html = file.read()
     
         html = html.replace('@numero_factura@', str(facturaObj.serie_fact))
