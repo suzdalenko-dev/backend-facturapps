@@ -41,7 +41,7 @@ def wr_invoice_to_file(data):
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
   
-    file_name = f"data_{current_time.strftime('%Y-%m-%d_%H-%i-%s')}.json"
+    file_name = f"data_{current_time.strftime('%Y-%m-%d_%H')}.json"
     file_path = folder_path+file_name
     with open(file_path, 'w') as json_file:
         json.dump(data, json_file, indent=4)
