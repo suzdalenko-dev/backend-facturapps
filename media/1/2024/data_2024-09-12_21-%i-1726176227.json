@@ -2,39 +2,39 @@
     "lineas": [
         {
             "numLine": "0",
-            "idArticle1": "216",
-            "description": "pidars2",
-            "cantidad1": "1",
-            "precio1": "5.00",
-            "descPorc": "0",
-            "imp1Bruto": 5,
-            "desc1Valor": 0,
-            "importe1": 5,
-            "ivaPorcent": "10",
-            "ivaValLin1": 0.5,
-            "ivaType": "10"
+            "idArticle1": "1",
+            "description": "Palier",
+            "cantidad1": "10",
+            "precio1": "150.00",
+            "descPorc": "10",
+            "imp1Bruto": 1500,
+            "desc1Valor": 150,
+            "importe1": 1350,
+            "ivaPorcent": "21",
+            "ivaValLin1": 283.5,
+            "ivaType": "21"
         }
     ],
     "manoObra": {
         "canridadManoObra": "1",
-        "precioManoObra": "35.00",
-        "importeBrutoManoObra": 35,
+        "precioManoObra": "50.00",
+        "importeBrutoManoObra": 50,
         "descManoObr": 0,
-        "importeManoObra": 35,
+        "importeManoObra": 50,
         "ivaPorcentManoOb": "21",
-        "valorIvaManoObra": 7.35,
+        "valorIvaManoObra": 10.5,
         "tipoIvaManoObra": "21"
     },
     "factura": {
-        "idSubTotal": 40,
-        "idIvaTotal": 7.85,
-        "idTotalFactura": 47.85,
+        "idSubTotal": 1400,
+        "idIvaTotal": 294,
+        "idTotalFactura": 1694,
         "selectTypeInvoice": "O"
     },
     "cliente": {
         "clientIdDeveloper": "1",
         "clientNumber": "1",
-        "clienteRazon": "Google Cliente"
+        "clienteRazon": "IPHONE GOOGLE FONE"
     },
     "vehicle": {
         "inputVehicleMatricula": "Q 2343 A",
@@ -78,13 +78,13 @@
         }
     ],
     "observaciones": {
-        "obstextareaid": "vbvb"
+        "obstextareaid": "\"campo de observaciones\" escrito por Alexey Suzdalenko"
     },
     "credentials": {
         "company_id": "1",
         "email": "suzdalenko@gmail.com",
         "cif": "X4207693G",
-        "uid": "1725533351",
+        "uid": "1726079495",
         "password": "123456"
     }
 }
