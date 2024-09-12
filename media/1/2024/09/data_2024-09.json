@@ -1,0 +1,90 @@
+{
+    "lineas": [
+        {
+            "numLine": "0",
+            "idArticle1": "216",
+            "description": "pidars2",
+            "cantidad1": "1",
+            "precio1": "5.00",
+            "descPorc": "0",
+            "imp1Bruto": 5,
+            "desc1Valor": 0,
+            "importe1": 5,
+            "ivaPorcent": "10",
+            "ivaValLin1": 0.5,
+            "ivaType": "10"
+        }
+    ],
+    "manoObra": {
+        "canridadManoObra": "1",
+        "precioManoObra": "35.00",
+        "importeBrutoManoObra": 35,
+        "descManoObr": 0,
+        "importeManoObra": 35,
+        "ivaPorcentManoOb": "21",
+        "valorIvaManoObra": 7.35,
+        "tipoIvaManoObra": "21"
+    },
+    "factura": {
+        "idSubTotal": 40,
+        "idIvaTotal": 7.85,
+        "idTotalFactura": 47.85,
+        "selectTypeInvoice": "O"
+    },
+    "cliente": {
+        "clientIdDeveloper": "1",
+        "clientNumber": "1",
+        "clienteRazon": "Google Cliente"
+    },
+    "vehicle": {
+        "inputVehicleMatricula": "Q 2343 A",
+        "inputVehicleMarca": "Marca/Modelo/Kil\u00f3metros"
+    },
+    "desglose": [
+        {
+            "iva": 21,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 5.2
+        },
+        {
+            "iva": 10,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 1.4
+        },
+        {
+            "iva": 4,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": 0,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": "0EXENTO",
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        }
+    ],
+    "observaciones": {
+        "obstextareaid": "vbvb"
+    },
+    "credentials": {
+        "company_id": "1",
+        "email": "suzdalenko@gmail.com",
+        "cif": "X4207693G",
+        "uid": "1725533351",
+        "password": "123456"
+    }
+}
