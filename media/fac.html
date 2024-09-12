@@ -21,10 +21,6 @@
             -pdf-frame-content: col2_content;
             right: 5pt; width: 290pt; top: 610pt; height: 330pt;
         }
-        @frame footer_frame {           /* Another static Frame */
-            -pdf-frame-content: footer_content;
-            left: 5pt; width: 585pt; top: 750pt; height: 100pt;
-        }
     }
     .div_vehicle{
         background-color: #4e73df; color:white; margin-top: 11px; display: block;
@@ -121,7 +117,8 @@
             @html_ivas@
         </table>
         <br>
-        Observaciones: @observaciones@
+        Observaciones: @observaciones@ <br>
+        (c) - Pagina <pdf:pagenumber></pdf:pagenumber>de <pdf:pagecount></pdf:pagecount>
     </div>
 
     <div id="col2_content">
@@ -133,11 +130,6 @@
             <tr><td colspan="2"><b>Total factura</b></td><td class="right_align"><b>@factura_total@</b></td></tr>
             <tr><td colspan="3" style="height: 49px;">Firma Cliente</td></tr>
         </table>
-    </div>
-
-    <div id="footer_content">
-        Observaciones: @observaciones@ hla<br> 
-        (c) - Pagina <pdf:pagenumber></pdf:pagenumber>de <pdf:pagecount></pdf:pagecount>
     </div>
 </body>
 </html>
