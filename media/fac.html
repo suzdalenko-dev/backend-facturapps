@@ -3,7 +3,7 @@
 <style>
     @page {
         size: a4 portrait;
-        @frame header_frame {
+        @frame header_frame {         
             -pdf-frame-content: header_content;
             left: 5pt; width: 585pt; top: 5pt; height: 340pt;
         }
@@ -17,7 +17,7 @@
             -pdf-frame-content: col1_content;
             left: 5pt; width: 290pt; top: 610pt; height: 332pt;
         }
-        @frame col2_frame {
+        @frame col2_frame {          
             -pdf-frame-content: col2_content;
             right: 5pt; width: 290pt; top: 610pt; height: 330pt;
         }
@@ -98,8 +98,8 @@
             </table>
         </div>
     </div>
-
-
+   
+ 
     <!-- HTML Content -->
     <div id="content_frame">
         @vehicle_data@
@@ -113,7 +113,7 @@
         </div>
    </div>
 
-
+   
     <div id="col1_content">
         <table style="border: 1px solid rgb(233, 233, 255);">
             <tr><td colspan="2" style="background-color: #4e73df; color:white;">BASE IMPONIBLE</td><td style="background-color: #4e73df; color:white;">I.V.A</td><td colspan="2" style="background-color: #4e73df; color:white;">R.E</td>
@@ -134,7 +134,7 @@
     </div>
 
     <div id="footer_content">
-        Observaciones: @observaciones@ <br>
+        Observaciones: @observaciones@ <br> 
         (c) - Pagina <pdf:pagenumber></pdf:pagenumber>de <pdf:pagecount>
     </div>
 </body>
