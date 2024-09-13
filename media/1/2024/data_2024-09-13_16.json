@@ -2,39 +2,39 @@
     "lineas": [
         {
             "numLine": "0",
-            "idArticle1": "1",
-            "description": "Palier",
+            "idArticle1": "227",
+            "description": "descripcion articulo",
             "cantidad1": "1",
-            "precio1": "150.00",
+            "precio1": "35.00",
             "descPorc": "0",
-            "imp1Bruto": 150,
+            "imp1Bruto": 35,
             "desc1Valor": 0,
-            "importe1": 150,
+            "importe1": 35,
             "ivaPorcent": "21",
-            "ivaValLin1": 31.5,
+            "ivaValLin1": 7.35,
             "ivaType": "21"
         }
     ],
     "manoObra": {
-        "canridadManoObra": "1",
-        "precioManoObra": "50.00",
-        "importeBrutoManoObra": 50,
+        "canridadManoObra": 0,
+        "precioManoObra": "35.00",
+        "importeBrutoManoObra": 0,
         "descManoObr": 0,
-        "importeManoObra": 50,
+        "importeManoObra": 0,
         "ivaPorcentManoOb": "21",
-        "valorIvaManoObra": 10.5,
+        "valorIvaManoObra": 0,
         "tipoIvaManoObra": "21"
     },
     "factura": {
-        "idSubTotal": 200,
-        "idIvaTotal": 42,
-        "idTotalFactura": 242,
+        "idSubTotal": 35,
+        "idIvaTotal": 7.35,
+        "idTotalFactura": 42.35,
         "selectTypeInvoice": "O"
     },
     "cliente": {
-        "clientIdDeveloper": "1",
-        "clientNumber": "1",
-        "clienteRazon": "IPHONE GOOGLE FONE"
+        "clientIdDeveloper": "2",
+        "clientNumber": "2",
+        "clienteRazon": "RAZON IPHONE"
     },
     "vehicle": {
         "inputVehicleMatricula": "",
@@ -84,7 +84,7 @@
         "company_id": "1",
         "email": "suzdalenko@gmail.com",
         "cif": "X4207693G",
-        "uid": "1726079495",
+        "uid": "1725533351",
         "password": "123456"
     }
 }
