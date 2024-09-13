@@ -31,7 +31,7 @@ def invoice_actions(request, action, id):
 
         desglose     = data['desglose']
         ejercicio    = str(datetime.now().strftime('%Y')).strip()
-        tipo_factura = str(data['factura']['selectTypeInvoice']).strip()
+        tipo_factura = str(data['factura']['tipo_factura']).strip()
         lineas       = data['lineas']
         if len(lineas) == 0:
              return json_suzdal({'status':'error', 'message':'Factura sin lineas'})
@@ -39,7 +39,9 @@ def invoice_actions(request, action, id):
         try:
             customer = Customer.objects.get(id=data['cliente']['clientIdDeveloper'], clientcode=data['cliente']['clientNumber'], company_id=company['id'])
             factura  = Factura.objects.create(company_id=company['id'], tipo_factura=tipo_factura, ejercicio=ejercicio)
-            document = Document.objects.filter(company_id=company['id'], description=tipo_factura, ejercicio=ejercicio).values('value').first() 
+            document = Document.objects.filter(company_id=company['id'], description=tipo_factura, ejercicio=ejercicio).values('value').first()
+            factura.name_factura          = str(data['factura']['name_factura']).strip()
+            factura.apunta_factura        = str(data['factura']['apunta_factura']).strip()
             factura.numero                = document['value']
             factura.serie_fact            = f"{tipo_factura}-{ejercicio}-{factura.numero}"
             factura.serie_fact_unique     = f"{tipo_factura}-{ejercicio}-{factura.numero}-{company['id']}"

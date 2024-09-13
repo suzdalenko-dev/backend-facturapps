@@ -5,25 +5,18 @@
         size: a4 portrait;
         @frame header_frame {         
             -pdf-frame-content: header_content;
-            left: 5pt; width: 585pt; top: 5pt; height: 340pt;
+            left: 11pt; width: 573pt; top: 11pt; height: 340pt;
         }
         @frame content_frame {
-            left: 5pt;
-            width: 585pt;
-            top: 110pt;
-            height: 462pt;
+            left: 11pt; width: 573pt; top: 110pt; height: 462pt;
         }
         @frame col1_frame {
             -pdf-frame-content: col1_content;
-            left: 5pt; width: 290pt; top: 610pt; height: 332pt;
+            left: 11pt; width: 285pt; top: 610pt; height: 332pt;
         }
         @frame col2_frame {          
             -pdf-frame-content: col2_content;
-            right: 5pt; width: 290pt; top: 610pt; height: 330pt;
-        }
-        @frame footer_frame {           /* Another static Frame */
-            -pdf-frame-content: footer_content;
-            left: 5pt; width: 585pt; top: 750pt; height: 100pt;
+            right: 11pt; width: 285pt; top: 610pt; height: 330pt;
         }
     }
     .div_vehicle{
@@ -71,11 +64,12 @@
                 <tbody>
                     <tr>
                         <td>
-                            <span class="h1class">FACTURA @tipo_factura@</span><br>
+                            <span class="h1class"> @name_factura@ </span><br>
                             Numero: @numero_factura@<br>
                             Fecha: @fecha_factura@<br>
                             Vencimiento: @fecha_vencimiento@<br>
-                            F.Pago: <b>CONTADO</b>
+                            F.Pago: <b>CONTADO</b><br>
+                            @apunta_a_factura@
                         </td>
                         <td>
                             <b>Emisor</b><br>
@@ -133,11 +127,6 @@
             <tr><td colspan="2"><b>Total factura</b></td><td class="right_align"><b>@factura_total@</b></td></tr>
             <tr><td colspan="3" style="height: 49px;">Firma Cliente</td></tr>
         </table>
-    </div>
-
-    <div id="footer_content">
-        Observaciones: @observaciones@ hla<br> 
-        (c) - Pagina <pdf:pagenumber></pdf:pagenumber>de <pdf:pagecount></pdf:pagecount>
     </div>
 </body>
 </html>

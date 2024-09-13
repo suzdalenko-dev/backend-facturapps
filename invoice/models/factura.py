@@ -3,7 +3,11 @@ from django.db import models
 class Factura(models.Model):
     id                    = models.AutoField(primary_key=True)
     company_id            = models.BigIntegerField(null=True)
+    
     tipo_factura          = models.CharField(max_length=3, null=True)
+    name_factura          = models.CharField(max_length=40, null=True)
+    apunta_factura        = models.CharField(max_length=40, null=True)
+    
     ejercicio             = models.CharField(max_length=7, null=True)
     serie_fact            = models.CharField(max_length=22, null=True)
     numero                = models.BigIntegerField(null=True)                           
@@ -35,7 +39,7 @@ class Factura(models.Model):
     total2           = models.DecimalField(max_digits=11, decimal_places=2, default=0)
   
     observacion      = models.CharField(max_length=254, null=True)
-    apunta_factura   = models.CharField(max_length=22, null=True)
+
 
 
     class Meta:

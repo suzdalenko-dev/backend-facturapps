@@ -34,13 +34,12 @@ def pdf_work(request, action, id):
         with open('mysite/media/fac.html', 'r') as file:
             html = file.read()
     
+        html = html.replace('@name_factura@', str(facturaObj.name_factura))
         html = html.replace('@numero_factura@', str(facturaObj.serie_fact))
         html = html.replace('@fecha_factura@', str(facturaObj.fecha_expedicion))
         html = html.replace('@fecha_vencimiento@', str(facturaObj.vencimiento))
-        tipo_factura = ''
-        if facturaObj.tipo_factura == 'R': tipo_factura = 'RECTIFICATIVA'
-        if facturaObj.tipo_factura == 'A': tipo_factura = 'ABONO'
-        html = html.replace('@tipo_factura@', tipo_factura)
+        if len(str(facturaObj.apunta_factura)) > 11: html = html.replace('@apunta_a_factura@', 'APUNTA A: '+str(facturaObj.apunta_factura))
+        else: html = html.replace('@apunta_a_factura@', '')
         html = html.replace('@razon@', company['razon'])
         html = html.replace('@person_name@', company['person_name'])
         html = html.replace('@province@', company['province'])
