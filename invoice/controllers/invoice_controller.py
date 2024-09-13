@@ -146,7 +146,7 @@ def invoice_actions(request, action, id):
             
             
             if factura.id > 0:
-                print('factura.customer_num2='+str(factura.customer_num))
+                pass
             else:
                 return json_suzdal({'status':'error', 'message':'Fallo al crear factura'})
         except Exception as e:

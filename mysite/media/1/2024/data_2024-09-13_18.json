@@ -2,27 +2,27 @@
     "lineas": [
         {
             "numLine": "0",
-            "idArticle1": "",
+            "idArticle1": "229",
             "description": "asdf",
             "cantidad1": "1",
-            "precio1": "23",
-            "descPorc": "0",
+            "precio1": "23.00",
+            "descPorc": "110",
             "imp1Bruto": 23,
-            "desc1Valor": 0,
-            "importe1": 23,
+            "desc1Valor": 25.3,
+            "importe1": -2.3000000000000007,
             "ivaPorcent": "21",
-            "ivaValLin1": 4.83,
+            "ivaValLin1": -0.48300000000000015,
             "ivaType": "21"
         }
     ],
     "manoObra": {
-        "canridadManoObra": 0,
+        "canridadManoObra": "11",
         "precioManoObra": "35.00",
-        "importeBrutoManoObra": 0,
+        "importeBrutoManoObra": 385,
         "descManoObr": 0,
-        "importeManoObra": 0,
+        "importeManoObra": 385,
         "ivaPorcentManoOb": "21",
-        "valorIvaManoObra": 0,
+        "valorIvaManoObra": 80.85,
         "tipoIvaManoObra": "21"
     },
     "factura": {
@@ -36,8 +36,8 @@
         "clienteRazon": "RAZON IPHONE"
     },
     "vehicle": {
-        "inputVehicleMatricula": "",
-        "inputVehicleMarca": ""
+        "inputVehicleMatricula": "ADAASGDSFG",
+        "inputVehicleMarca": "ASDFASDFASDF"
     },
     "desglose": [
         {
@@ -77,7 +77,7 @@
         }
     ],
     "observaciones": {
-        "obstextareaid": "asdf"
+        "obstextareaid": "123"
     },
     "credentials": {
         "company_id": "1",
