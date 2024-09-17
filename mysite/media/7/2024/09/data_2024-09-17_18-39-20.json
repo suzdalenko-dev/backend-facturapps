@@ -3,15 +3,15 @@
         {
             "numLine": "0",
             "idArticle1": "",
-            "description": "hgnggjjhgjhgjgjgjg jhgjhgjhgjgj",
+            "description": "aaaaaaaaaaa",
             "cantidad1": "1",
-            "precio1": "1111",
+            "precio1": "111",
             "descPorc": "0",
-            "imp1Bruto": 1111,
+            "imp1Bruto": 111,
             "desc1Valor": 0,
-            "importe1": 1111,
+            "importe1": 111,
             "ivaPorcent": "21",
-            "ivaValLin1": 233.31,
+            "ivaValLin1": 23.31,
             "ivaType": "21"
         }
     ],
@@ -26,21 +26,21 @@
         "tipoIvaManoObra": "21"
     },
     "factura": {
-        "idSubTotal": 1234,
-        "idIvaTotal": 259.14,
-        "idTotalFactura": 1493.1399999999999,
+        "idSubTotal": 234,
+        "idIvaTotal": 49.14,
+        "idTotalFactura": 283.14,
         "tipo_factura": "O",
         "name_factura": "FACTURA",
         "apunta_factura": ""
     },
     "cliente": {
-        "clientIdDeveloper": "6",
+        "clientIdDeveloper": "7",
         "clientNumber": "1",
         "clienteRazon": "Raz\u00f3n o denominaci\u00f3n social"
     },
     "vehicle": {
-        "inputVehicleMatricula": "jhghgjghg",
-        "inputVehicleMarca": "mgjhgjhgjgjg gj gjhghj"
+        "inputVehicleMatricula": "mmmmmmmmmmmm",
+        "inputVehicleMarca": "msgsdfgsdgf"
     },
     "desglose": [
         {
@@ -80,13 +80,13 @@
         }
     ],
     "observaciones": {
-        "obstextareaid": "mjhmhghgh"
+        "obstextareaid": "123"
     },
     "credentials": {
-        "company_id": "6",
-        "email": "1231111111111111111@.",
-        "cif": "123456",
-        "uid": "1726565696",
-        "password": "111111"
+        "company_id": "7",
+        "email": "x420@gmail.com",
+        "cif": "X4207693X",
+        "uid": "1726591083",
+        "password": "123456"
     }
 }
