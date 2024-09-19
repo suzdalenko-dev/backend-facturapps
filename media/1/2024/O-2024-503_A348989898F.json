@@ -1,0 +1,92 @@
+{
+    "lineas": [
+        {
+            "numLine": "1",
+            "idArticle1": "",
+            "description": "picar piedra",
+            "cantidad1": "1",
+            "precio1": "1",
+            "descPorc": "0",
+            "imp1Bruto": 1,
+            "desc1Valor": 0,
+            "importe1": 1,
+            "ivaPorcent": "21",
+            "ivaValLin1": 0.21,
+            "ivaType": "21"
+        }
+    ],
+    "manoObra": {
+        "canridadManoObra": "10",
+        "precioManoObra": "40",
+        "importeBrutoManoObra": 400,
+        "descManoObr": 200,
+        "importeManoObra": 200,
+        "ivaPorcentManoOb": "21",
+        "valorIvaManoObra": 42,
+        "tipoIvaManoObra": "21"
+    },
+    "factura": {
+        "idSubTotal": 201,
+        "idIvaTotal": 42.21,
+        "idTotalFactura": 243.21,
+        "tipo_factura": "O",
+        "name_factura": "FACTURA",
+        "apunta_factura": ""
+    },
+    "cliente": {
+        "clientIdDeveloper": "1",
+        "clientNumber": "1",
+        "clienteRazon": "Google Cliente"
+    },
+    "vehicle": {
+        "inputVehicleMatricula": "Q 2343 A",
+        "inputVehicleMarca": "Marca/Modelo/Kil\u00f3metros"
+    },
+    "desglose": [
+        {
+            "iva": 21,
+            "valor_iva": -83.79,
+            "base_imponible": -399.0,
+            "total_con_iva": -481.58000000000004,
+            "recec": 5.2
+        },
+        {
+            "iva": 10,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 1.4
+        },
+        {
+            "iva": 4,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": 0,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": "0EXENTO",
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        }
+    ],
+    "observaciones": {
+        "obstextareaid": ""
+    },
+    "credentials": {
+        "company_id": "1",
+        "email": "suzdalenko@gmail.com",
+        "cif": "X4207693G",
+        "uid": "1725533351",
+        "password": "123456"
+    }
+}
