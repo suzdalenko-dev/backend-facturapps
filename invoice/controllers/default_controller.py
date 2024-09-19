@@ -62,6 +62,5 @@ def default_actions(request, action, entity, id):
         return json_suzdal({'res':response, 'status':'ok', 'company':company})
     
     except Exception as e:
-        print(str(e))
         return json_suzdal({'message': str(e),'status': 'error'})
   

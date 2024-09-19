@@ -23,11 +23,6 @@ def invoice_actions(request, action, id):
         auth_status, company = user_auth(request, data)
         if auth_status is None or company is None:
             return json_suzdal({'login': False, 'status':'error', 'message':'Usuario no esta logeado'})
-            
-        try:
-            wr_invoice_in_thread(data)
-        except Exception as e:
-            pass
 
         desglose     = data['desglose']
         ejercicio    = str(datetime.now().strftime('%Y')).strip()
@@ -52,8 +47,6 @@ def invoice_actions(request, action, id):
             factura.customer_num          = customer.clientcode
             factura.receptor_company_name = customer.razon
 
-            print('factura.customer_num='+str(factura.customer_num))
-
             SUBTOTAL_FACTURA = 0
             IMP_IVAS_FACTURA = 0
             TOTAL_FACTURA    = 0
@@ -61,7 +54,6 @@ def invoice_actions(request, action, id):
 
             # Base Imponible = Precio del artículo × Cantidad de artículos
             for linea in lineas:
-                print("---------------------------------------------------------------------------------")
                 description = str(linea.get('description', 'none')).strip()
                 idArticle1  = str(linea.get('idArticle1', '')).strip()
                 precio1     = float(linea.get('precio1', 0))
@@ -87,7 +79,6 @@ def invoice_actions(request, action, id):
                 TOTAL_FACTURA        += importe_final
 
                 for d in desglose:
-                    print(d)
                     if str(d['iva']) == ivaTypeStr:
                         d['base_imponible'] += importe_con_descuento
                         d['valor_iva'] += valor_iva
@@ -143,16 +134,13 @@ def invoice_actions(request, action, id):
             if inputVehicleMatricula != '' and len(inputVehicleMatricula) > 3:
                 get_or_save_vehicle(factura.id, company['id'], customer.id, inputVehicleMatricula, inputVehicleMarca)
                 
-            
-            
+            wr_invoice_in_thread(data, factura.serie_fact, customer.cif_nif)
             if factura.id > 0:
                 pass
             else:
                 return json_suzdal({'status':'error', 'message':'Fallo al crear factura'})
         except Exception as e:
-            if factura is not None:
-                factura.delete()
-            print('ERROR ----------------------------------------------------------------------------------------- '+str(e))    
+            wr_invoice_in_thread(data, factura.serie_fact, customer.cif_nif) 
             return json_suzdal({'status':'error', 'message':str(e)})
         
 

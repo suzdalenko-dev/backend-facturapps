@@ -23,18 +23,16 @@ def pdf_work(request, action, id):
 
         current_time = datetime.now()
         year  = str(current_time.strftime('%Y'))
-        month = str(current_time.strftime('%m'))
-        # dayd  = str(current_time.strftime('%m'))
-        folder_path = f"mysite/media/{str(company['id'])}/{year}/{month}/"
+        folder_path = os.path.join(settings.BASE_DIR, 'media', str(company['id']), year)
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
-        seconds = creating_invoice_time()
-        file_name = f"f_{facturaObj.serie_fact}_{seconds}.pdf"
-        file_path = folder_path+file_name
+        file_name = f"{facturaObj.serie_fact}_{customerObj.cif_nif}.pdf"
+        file_path = os.path.join(folder_path, file_name)
 
-        with open('mysite/media/fac.html', 'r') as file:
+        html_template_path = os.path.join(settings.BASE_DIR, 'media', 'fac.html')
+        with open(html_template_path, 'r') as file:
             html = file.read()
-    
+
         html = html.replace('@name_factura@', str(facturaObj.name_factura))
         html = html.replace('@numero_factura@', str(facturaObj.serie_fact))
         html = html.replace('@fecha_factura@', str(facturaObj.fecha_expedicion))
@@ -80,15 +78,12 @@ def pdf_work(request, action, id):
         json_string = json.loads(facturaObj.ivas_desglose)
         for jsonObj in json_string:
             html_ivas +=  f"""<tr><td>{jsonObj['base_imponible']:.2f}</td><td>{jsonObj['iva']}</td><td>{jsonObj['valor_iva']:.2f}</td><td>{jsonObj['recec']:.2f}</td><td>0.00</td></tr>"""
-            print(jsonObj)
         
         html = html.replace('@html_ivas@', html_ivas)
         html = html.replace('@suma_importes@', f"""{facturaObj.subtotal:.2f}""")
         html = html.replace('@importe_ivas@', f"""{facturaObj.importe_ivas:.2f}""")
         html = html.replace('@factura_total@', f"""{facturaObj.total:.2f}""")
         html = html.replace('@observaciones@', str(facturaObj.observacion))
-
-        print('-----------------'+str(file_path))
 
         with open(file_path, "wb") as pdf_file:
             # Convertir el HTML a PDF y guardarlo en el archivo

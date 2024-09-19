@@ -28,26 +28,23 @@ def creating_invoice_time():
     return formatted_time
 
 
-def wr_invoice_in_thread(data):
-    thread = threading.Thread(target=wr_invoice_to_file, args=(data,))
+def wr_invoice_in_thread(data, factura_serie, cif_customer):
+    thread = threading.Thread(target=wr_invoice_to_file, args=(data, factura_serie, cif_customer))
     thread.daemon = True
     thread.start()
 
 
 
-def wr_invoice_to_file(data):
+def wr_invoice_to_file(data, factura_serie, cif_customer):
     company_id   = data['credentials']['company_id']
     current_time = datetime.now()
     year  = str(current_time.strftime('%Y'))
-    month = str(current_time.strftime('%m'))
-    day   = str(current_time.strftime('%d'))
-    folder_path = f"mysite/media/{str(company_id)}/{year}/{month}/"
+    folder_path = os.path.join(settings.BASE_DIR, 'media', str(company_id), year)
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
   
-    file_name_time = creating_invoice_time()
-    file_name = f"data_{file_name_time}.json"
-    file_path = folder_path+file_name
+    file_name = f"{factura_serie}_{cif_customer}.json"
+    file_path = os.path.join(folder_path, file_name)
     with open(file_path, 'w') as json_file:
         json.dump(data, json_file, indent=4)
 

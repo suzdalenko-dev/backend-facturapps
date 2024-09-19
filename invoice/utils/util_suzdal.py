@@ -209,6 +209,5 @@ def factura_new_lines(lineas_factura):
 
             linea_factura.iva_type     = tipo_iva_string
             linea_factura.save()
-            print(linea)
         except Exception as e:
-            print('ERROR-------------------------------------------'+str(e))
+            pass
