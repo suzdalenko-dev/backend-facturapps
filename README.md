@@ -16,7 +16,10 @@ python manage.py migrate sessions zero
 ###### pip install xhtml2pdf
 ###### /home/simplefactura/mysite/staticfiles
 ######
-######
+simplefactura2024@gmail.com
+qgij ftlb pijq xulp
+qgij ftlb pijq xulp
+
 ######
 ###### 
 
