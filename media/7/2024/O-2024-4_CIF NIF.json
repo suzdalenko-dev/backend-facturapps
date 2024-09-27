@@ -1,0 +1,92 @@
+{
+    "lineas": [
+        {
+            "numLine": "0",
+            "idArticle1": "239",
+            "description": "aaaaaaaaaaa",
+            "cantidad1": "1",
+            "precio1": "111.00",
+            "descPorc": "0",
+            "imp1Bruto": 111,
+            "desc1Valor": 0,
+            "importe1": 111,
+            "ivaPorcent": "21",
+            "ivaValLin1": 23.31,
+            "ivaType": "21"
+        }
+    ],
+    "manoObra": {
+        "canridadManoObra": 0,
+        "precioManoObra": "123.00",
+        "importeBrutoManoObra": 0,
+        "descManoObr": 0,
+        "importeManoObra": 0,
+        "ivaPorcentManoOb": "21",
+        "valorIvaManoObra": 0,
+        "tipoIvaManoObra": "21"
+    },
+    "factura": {
+        "idSubTotal": 111,
+        "idIvaTotal": 23.31,
+        "idTotalFactura": 134.31,
+        "tipo_factura": "O",
+        "name_factura": "FACTURA",
+        "apunta_factura": ""
+    },
+    "cliente": {
+        "clientIdDeveloper": "7",
+        "clientNumber": "1",
+        "clienteRazon": "Raz\u00f3n o denominaci\u00f3n social"
+    },
+    "vehicle": {
+        "inputVehicleMatricula": "aaaaaaa",
+        "inputVehicleMarca": "aaaaaabbbb"
+    },
+    "desglose": [
+        {
+            "iva": 21,
+            "valor_iva": 23.31,
+            "base_imponible": 111.0,
+            "total_con_iva": 134.31,
+            "recec": 5.2
+        },
+        {
+            "iva": 10,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 1.4
+        },
+        {
+            "iva": 4,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": 0,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": "0EXENTO",
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        }
+    ],
+    "observaciones": {
+        "obstextareaid": ""
+    },
+    "credentials": {
+        "company_id": "7",
+        "email": "x420@gmail.com",
+        "cif": "X4207693X",
+        "uid": "1726591083",
+        "password": "123456"
+    }
+}
