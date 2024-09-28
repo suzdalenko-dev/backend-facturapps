@@ -8,9 +8,14 @@ from invoice.models.facturalineas import Facturalineas
 from invoice.models.vehicledata import Vehicledata
 from invoice.utils.time_suzdal import creating_invoice_time, second_suzdal
 from mysite import settings
-from ..utils.util_suzdal import factura_new_article, factura_new_lines, json_suzdal, user_auth
+from ..utils.util_suzdal import enviar_correo, factura_new_article, factura_new_lines, json_suzdal, user_auth
 
 def pdf_work(request, action, id):
+    file_path    = ""
+    url_email    = ""
+    invoice_name = ""
+    company_mail = ""
+    custome_mail = ""
     try:
         auth_status, company = user_auth(request, None)
         if auth_status is None or company is None:
@@ -20,6 +25,8 @@ def pdf_work(request, action, id):
         customerObj = Customer.objects.get(id=facturaObj.customer_id, company_id=company['id'])
         vehicle     = Vehicledata.objects.filter(invoice_id=id, company_id=company['id']).first()
         lineasFact  = Facturalineas.objects.filter(invoice_id=id, company_id=company['id'])
+        company_mail= str(company['emailcompany']).strip()
+        custome_mail= str(customerObj.emailcustomer).strip()
 
         current_time = datetime.now()
         year  = str(current_time.strftime('%Y'))
@@ -35,6 +42,7 @@ def pdf_work(request, action, id):
 
         html = html.replace('@name_factura@', str(facturaObj.name_factura))
         html = html.replace('@numero_factura@', str(facturaObj.serie_fact))
+        invoice_name = f"{str(facturaObj.name_factura)} {str(facturaObj.serie_fact)}"
         html = html.replace('@fecha_factura@', str(facturaObj.fecha_expedicion))
         html = html.replace('@fecha_vencimiento@', str(facturaObj.vencimiento))
         if len(str(facturaObj.apunta_factura)) > 11: html = html.replace('@apunta_a_factura@', 'APUNTA A: '+str(facturaObj.apunta_factura))
@@ -89,17 +97,38 @@ def pdf_work(request, action, id):
             # Convertir el HTML a PDF y guardarlo en el archivo
             pisa_status = pisa.CreatePDF(html, dest=pdf_file)
 
+        url_email = file_path
         file_path = file_path.split('media')
-
-        rdata = {
-                'status': 'ok',
-                'message': 'PDF creado',
-                'url':'media'+file_path[1],
-                'id':id
-        }
-         
-    
-        return json_suzdal(rdata)
-    
+             
     except Exception as e:
         return json_suzdal({'message': str(e), 'status': 'error'})
+
+    if "create_and_sent" == action:
+        # envio de correo al empresario
+        if ';' in company_mail:
+            partes = company_mail.split(';')
+            for parte in partes:
+                mail_company = str(parte).strip()
+                enviar_correo(url_email, invoice_name, mail_company)
+        else:
+            enviar_correo(url_email, invoice_name, company_mail)
+
+        # envio de correo al cliente
+        if ';' in custome_mail:
+            partes = custome_mail.split(';')
+            for parte in partes:
+                mail_company = str(parte).strip()
+                enviar_correo(url_email, invoice_name, mail_company)
+        else:
+            enviar_correo(url_email, invoice_name, custome_mail)
+
+
+
+    rdata = {
+            'status': 'ok',
+            'message': 'PDF creado',
+            'url':'media'+file_path[1],
+            'id':id
+    }
+
+    return json_suzdal(rdata)

@@ -1,11 +1,15 @@
+from email import encoders
+from email.mime.base import MIMEBase
+import os
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from decimal import Decimal
 from django.http import JsonResponse
 from invoice.models.article import Article
 from invoice.models.company import Company
 from invoice.models.customer import Customer
 from invoice.models.document import Document
-from copy import deepcopy
-
 from invoice.models.facturalineas import Facturalineas
 
 
@@ -207,7 +211,46 @@ def factura_new_lines(lineas_factura):
             linea_factura.iva_valor     = linea_factura.iva_porcent / 100 * linea_factura.importe_con_descuento
             linea_factura.importe_res   = linea_factura.importe_con_descuento + linea_factura.iva_valor 
 
-            linea_factura.iva_type     = tipo_iva_string
+            linea_factura.iva_type      = tipo_iva_string
             linea_factura.save()
         except Exception as e:
             pass
+
+
+
+def enviar_correo(url_email, invoice_name, user_email):
+    try:
+        # Crea la estructura del mensaje
+        msg = MIMEMultipart()
+        msg['From'] = "simplefactura2024@gmail.com"
+        msg['To'] = user_email
+        msg['Subject'] = invoice_name
+        html_message = f'''<div style="background-color:#395fce;color:white;font-family:Roboto, RobotoDraft, Helvetica, Arial, sans-serif; border-radius:17px;">
+                                <div style="padding:11px;">
+                                    <h2>{invoice_name}</h2><br><a style="color:white;" href="https://factura-simple-on.web.app/" target="_blank">Factura Simple App</a><br>
+                                </div>
+                        <div>'''
+
+        # Cuerpo del mensaje
+        msg.attach(MIMEText(html_message, 'html'))  # Usa 'html' si deseas enviar contenido HTML
+
+        if os.path.isfile(url_email):
+            with open(url_email, 'rb') as archivo:
+               parte_adjunto = MIMEBase('application', 'octet-stream')
+               parte_adjunto.set_payload(archivo.read())
+            encoders.encode_base64(parte_adjunto)
+            filename = os.path.basename(url_email)
+            parte_adjunto.add_header('Content-Disposition',f'attachment; filename={filename}',)
+            msg.attach(parte_adjunto)
+
+        # Configuración del servidor SMTP (Gmail en este caso)
+        servidor = smtplib.SMTP('smtp.gmail.com', 587)
+        servidor.starttls()  # Activa la seguridad TLS
+        servidor.login("simplefactura2024@gmail.com", "qgij ftlb pijq xulp")  # Autenticación
+
+        # Envía el correo
+        servidor.sendmail("simplefactura2024@gmail.com", user_email, msg.as_string())
+        servidor.quit()  # Cierra la conexión
+
+    except Exception as e:
+        pass
