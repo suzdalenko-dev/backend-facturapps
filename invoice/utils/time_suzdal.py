@@ -28,6 +28,12 @@ def creating_invoice_time():
     return formatted_time
 
 
+def creating_invoice_minutes():
+    current_time = datetime.now()
+    formatted_time = str(current_time.strftime('%Y-%m-%d_%H-%M'))
+    return formatted_time
+
+
 def wr_invoice_in_thread(data, factura_serie, cif_customer):
     thread = threading.Thread(target=wr_invoice_to_file, args=(data, factura_serie, cif_customer))
     thread.daemon = True
