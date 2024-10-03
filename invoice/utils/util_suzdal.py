@@ -72,7 +72,6 @@ def update_company_data(request):
     except Exception as e:
         return None
 
-# suzdalenko@gmail.com X4207693G svoboda2019
 
 def create_new_article(request):
     description = str(request.POST.get('description')).strip()
