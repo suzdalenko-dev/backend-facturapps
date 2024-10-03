@@ -45,7 +45,7 @@ def wr_invoice_to_file(data, factura_serie, cif_customer):
     company_id   = data['credentials']['company_id']
     current_time = datetime.now()
     year  = str(current_time.strftime('%Y'))
-    folder_path = os.path.join(settings.BASE_DIR, 'media', str(company_id), year)
+    folder_path = os.path.join(settings.BASE_DIR, 'media', year, str(company_id))
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
   

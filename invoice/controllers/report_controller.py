@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 import openpyxl
 from invoice.models.article import Article
@@ -43,7 +44,9 @@ def entity_report(request, current_entity):
     for row in res_data:
         sheet.append(row)
 
-    folder_path = os.path.join(settings.BASE_DIR, 'media', str(company['id']), 'reports')
+    current_time = datetime.now()
+    year  = str(current_time.strftime('%Y'))
+    folder_path = os.path.join(settings.BASE_DIR, 'media', year, str(company['id']), 'reports')
     if not os.path.exists(folder_path): os.makedirs(folder_path)
     file_name = f"{current_entity}-{creating_invoice_minutes()}.xlsx"
     file_path = os.path.join(folder_path, file_name)
