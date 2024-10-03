@@ -2,8 +2,10 @@ import os
 import openpyxl
 from invoice.models.article import Article
 from invoice.models.company import Company
-from invoice.utils.time_suzdal import creating_invoice_minutes
-from invoice.utils.util_suzdal import json_suzdal, user_auth
+from invoice.models.customer import Customer
+from invoice.models.factura import Factura
+from invoice.utils.time_suzdal import creating_invoice_minutes, creating_invoice_time
+from invoice.utils.util_suzdal import delete_files_after_delay, json_suzdal, start_deletion_thread, user_auth
 from mysite import settings
 
 
@@ -23,17 +25,22 @@ def entity_report(request, current_entity):
     sheet = workbook.active
 
     res_data = [['App', 'Factura Simple', 'Suzdalenko Alexey']]
+    
     if current_entity == 'facturas':
-        pass
-    if current_entity == 'clientes':
-        pass
-    if current_entity == 'articulos':
-        res_data = Article.objects.filter(company_id=company['id']).values_list('artcode', 'description', 'price', 'iva', 'ivatype')
+        res_data = Factura.objects.filter(company_id=company['id']).values_list('fecha_expedicion', 'serie_fact_unique').order_by('-id')
         res_data = list(res_data)
-        res_data.insert(0, ['Código Artículo', 'Descripción', 'Precio Unidad €', 'IVA %', 'Tipo IVA'])
-        
-    print(res_data)
+        res_data.insert(0, ['Fecha expedición', 'Número'])
 
+
+    if current_entity == 'clientes':
+        res_data = Customer.objects.filter(company_id=company['id']).values_list('clientcode', 'cif_nif', 'razon', 'emailcustomer', 'phone', 'country', 'province', 'zipcode', 'city', 'address').order_by('-id')
+        res_data = list(res_data)
+        res_data.insert(0, ['Código cliente', 'CIF NIF', 'Razón social - nombre', 'Email', 'Teléfono', 'País', 'Provincia', 'Código postal', 'Cuidad', 'Dirección'])
+    if current_entity == 'articulos':
+        res_data = Article.objects.filter(company_id=company['id']).values_list('artcode', 'description', 'price', 'iva', 'ivatype').order_by('-id')
+        res_data = list(res_data)
+        res_data.insert(0, ['Código artículo', 'Descripción', 'Precio unidad €', 'IVA %', 'Tipo IVA'])
+        
     for row in res_data:
         sheet.append(row)
 
@@ -43,9 +50,7 @@ def entity_report(request, current_entity):
     file_path = os.path.join(folder_path, file_name)
     workbook.save(file_path)
 
-    
-    
-    print("Excel file created with list data!")
+    file_path = file_path.split('media')
+    start_deletion_thread(folder_path)
 
-
-    return json_suzdal({'res': current_entity, })
+    return json_suzdal({'url':'media'+file_path[1], 'status':'ok', 'company':company})

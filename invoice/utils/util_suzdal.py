@@ -5,6 +5,8 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from decimal import Decimal
+import threading
+import time
 from django.http import JsonResponse
 from invoice.models.article import Article
 from invoice.models.company import Company
@@ -253,3 +255,21 @@ def enviar_correo(url_email, invoice_name, user_email):
 
     except Exception as e:
         pass
+
+
+# Function to start the thread
+def start_deletion_thread(folder_path):
+    deletion_thread = threading.Thread(target=delete_files_after_delay, args=(folder_path,))
+    deletion_thread.daemon = True
+    deletion_thread.start()
+
+# Function to delete all files in the folder after waiting for 22 minutes
+def delete_files_after_delay(folder_path):
+    # Wait for 22 minutes
+    time.sleep(22 * 60)  # 22 minutes converted to seconds
+    # Iterate over files in the directory
+    for filename in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, filename) 
+        # Check if it's a file (not a sub-directory)
+        if os.path.isfile(file_path):
+            os.remove(file_path)
