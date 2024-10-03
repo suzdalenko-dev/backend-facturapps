@@ -27,10 +27,9 @@ def entity_report(request, current_entity):
     res_data = [['App', 'Factura Simple', 'Suzdalenko Alexey']]
     
     if current_entity == 'facturas':
-        res_data = Factura.objects.filter(company_id=company['id']).values_list('fecha_expedicion', 'serie_fact_unique').order_by('-id')
+        res_data = Factura.objects.filter(company_id=company['id']).values_list('fecha_expedicion', 'serie_fact', 'name_factura', 'subtotal', 'importe_ivas', 'total', 'observacion', 'apunta_factura').order_by('-id')
         res_data = list(res_data)
-        res_data.insert(0, ['Fecha expedición', 'Número'])
-
+        res_data.insert(0, ['Fecha expedición', 'Número', 'Tipo factura', 'Importe lineas', 'Importe IVA', 'Importe total', 'Observación', 'Apunta a factura'])
 
     if current_entity == 'clientes':
         res_data = Customer.objects.filter(company_id=company['id']).values_list('clientcode', 'cif_nif', 'razon', 'emailcustomer', 'phone', 'country', 'province', 'zipcode', 'city', 'address').order_by('-id')
