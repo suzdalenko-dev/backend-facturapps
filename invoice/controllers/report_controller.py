@@ -1,6 +1,7 @@
 from datetime import datetime
 import os
 import openpyxl
+from openpyxl.styles import PatternFill, Font
 from invoice.models.article import Article
 from invoice.models.company import Company
 from invoice.models.customer import Customer
@@ -24,7 +25,8 @@ def entity_report(request, current_entity):
 
     workbook = openpyxl.Workbook()
     sheet = workbook.active
-
+    header_fill = PatternFill(start_color="004d00", end_color="004d00", fill_type="solid")  # Verde
+    header_font = Font(color="FFFFFF")  # Blanco
     res_data = [['App', 'Factura Simple', 'Suzdalenko Alexey']]
     
     if current_entity == 'facturas':
@@ -33,7 +35,7 @@ def entity_report(request, current_entity):
                  FROM invoice_factura f 
                  JOIN invoice_customer c ON f.customer_id = c.id
                  WHERE f.company_id = %s AND f.fecha_expedicion >= '{default_from}' AND f.fecha_expedicion <= '{default_to}' ORDER BY id DESC"""
-        print(sql)
+
         res_data = Factura.objects.raw(sql, [company['id']])
         res_data = [
             [factura.fecha_expedicion, factura.serie_fact, factura.ejercicio, factura.name_factura, factura.subtotal, factura.importe_ivas, factura.total, factura.observacion, factura.apunta_factura, 
@@ -51,8 +53,12 @@ def entity_report(request, current_entity):
         res_data = list(res_data)
         res_data.insert(0, ['Código artículo', 'Descripción', 'Precio unidad €', 'IVA %', 'Tipo IVA'])
         
-    for row in res_data:
+    for index, row in enumerate(res_data):
         sheet.append(row)
+        if index == 0:  # Aplicar estilo solo a la primera fila
+            for cell in sheet[sheet.max_row]:
+                cell.fill = header_fill
+                cell.font = header_font
 
     current_time = datetime.now()
     year  = str(current_time.strftime('%Y'))
