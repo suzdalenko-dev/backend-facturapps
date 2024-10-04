@@ -28,9 +28,19 @@ def entity_report(request, current_entity):
     res_data = [['App', 'Factura Simple', 'Suzdalenko Alexey']]
     
     if current_entity == 'facturas':
-        res_data = Factura.objects.filter(company_id=company['id']).values_list('fecha_expedicion', 'serie_fact', 'name_factura', 'subtotal', 'importe_ivas', 'total', 'observacion', 'apunta_factura').order_by('-id')
-        res_data = list(res_data)
-        res_data.insert(0, ['Fecha expedición', 'Número', 'Tipo factura', 'Importe lineas', 'Importe IVA', 'Importe total', 'Observación', 'Apunta a factura'])
+        default_from = str(request.POST.get('default_from', '2022-01-01')).strip(); default_to = str(request.POST.get('default_to', '2222-01-01')).strip()
+        sql = f"""SELECT f.*, c.clientcode, c.cif_nif, c.razon
+                 FROM invoice_factura f 
+                 JOIN invoice_customer c ON f.customer_id = c.id
+                 WHERE f.company_id = %s AND f.fecha_expedicion >= '{default_from}' AND f.fecha_expedicion <= '{default_to}' ORDER BY id DESC"""
+        print(sql)
+        res_data = Factura.objects.raw(sql, [company['id']])
+        res_data = [
+            [factura.fecha_expedicion, factura.serie_fact, factura.ejercicio, factura.name_factura, factura.subtotal, factura.importe_ivas, factura.total, factura.observacion, factura.apunta_factura, 
+             factura.clientcode, factura.cif_nif, factura.razon]
+            for factura in res_data
+        ]
+        res_data.insert(0, ['Fecha expedición', 'Número', 'Ejercicio', 'Tipo factura', 'Importe lineas', 'Importe IVA', 'Importe total', 'Observación', 'Apunta a factura', 'Cliente número', 'CIF NIF', 'Razon social - nombre'])
 
     if current_entity == 'clientes':
         res_data = Customer.objects.filter(company_id=company['id']).values_list('clientcode', 'cif_nif', 'razon', 'emailcustomer', 'phone', 'country', 'province', 'zipcode', 'city', 'address').order_by('-id')

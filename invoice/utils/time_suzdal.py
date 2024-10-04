@@ -17,6 +17,11 @@ def current_date():
     formatted_time = str(current_time.strftime('%d/%m/%Y'))
     return formatted_time
 
+def fecha_expedicion():
+    current_time = datetime.now()
+    formatted_time = str(current_time.strftime('%Y-%m-%d'))
+    return formatted_time
+
 
 def second_suzdal():
     current_time_seconds = int(time.time())
@@ -45,7 +50,7 @@ def wr_invoice_to_file(data, factura_serie, cif_customer):
     company_id   = data['credentials']['company_id']
     current_time = datetime.now()
     year  = str(current_time.strftime('%Y'))
-    folder_path = os.path.join(settings.BASE_DIR, 'media', year, str(company_id))
+    folder_path = os.path.join(settings.BASE_DIR, 'media', year, str(company_id), 'pdf')
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
   
@@ -58,5 +63,5 @@ def wr_invoice_to_file(data, factura_serie, cif_customer):
 def get_time_11days():
     current_date = datetime.now()
     new_date = current_date + timedelta(days=11)
-    new_date_formatted = new_date.strftime('%d/%m/%Y')
+    new_date_formatted = new_date.strftime('%Y-%m-%d')
     return new_date_formatted

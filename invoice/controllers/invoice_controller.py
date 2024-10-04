@@ -3,7 +3,7 @@ from invoice.models.company import Company
 from invoice.models.customer import Customer
 from invoice.models.document import Document
 from invoice.models.factura import Factura
-from invoice.utils.time_suzdal import current_date, get_time_11days, wr_invoice_in_thread, wr_invoice_to_file
+from invoice.utils.time_suzdal import current_date, fecha_expedicion, get_time_11days, wr_invoice_in_thread, wr_invoice_to_file
 from invoice.utils.vehicle_func import get_or_save_vehicle
 from mysite import settings
 from ..utils.util_suzdal import factura_new_article, factura_new_lines, json_suzdal, user_auth
@@ -40,7 +40,7 @@ def invoice_actions(request, action, id):
             factura.numero                = document['value']
             factura.serie_fact            = f"{tipo_factura}-{ejercicio}-{factura.numero}"
             factura.serie_fact_unique     = f"{tipo_factura}-{ejercicio}-{factura.numero}-{company['id']}"
-            factura.fecha_expedicion      = current_date()
+            factura.fecha_expedicion      = fecha_expedicion()
             factura.vencimiento           = get_time_11days()
             
             factura.customer_id           = customer.id

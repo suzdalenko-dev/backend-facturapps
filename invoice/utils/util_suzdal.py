@@ -265,8 +265,8 @@ def start_deletion_thread(folder_path):
 
 # Function to delete all files in the folder after waiting for 22 minutes
 def delete_files_after_delay(folder_path):
-    # Wait for 22 minutes
-    time.sleep(22 * 60)  # 22 minutes converted to seconds
+    # Wait for 1 minutes
+    time.sleep(2 * 60)  # 1 minutes converted to seconds
     # Iterate over files in the directory
     for filename in os.listdir(folder_path):
         file_path = os.path.join(folder_path, filename) 

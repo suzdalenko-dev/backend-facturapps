@@ -30,7 +30,7 @@ def pdf_work(request, action, id):
 
         current_time = datetime.now()
         year  = str(current_time.strftime('%Y'))
-        folder_path = os.path.join(settings.BASE_DIR, 'media', year, str(company['id']))
+        folder_path = os.path.join(settings.BASE_DIR, 'media', year, str(company['id']), 'pdf')
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
         file_name = f"{facturaObj.serie_fact}_{customerObj.cif_nif}.pdf"
