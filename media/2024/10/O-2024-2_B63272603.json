@@ -1,0 +1,92 @@
+{
+    "lineas": [
+        {
+            "numLine": "0",
+            "idArticle1": "246",
+            "description": "Manzana",
+            "cantidad1": "1",
+            "precio1": "1.50",
+            "descPorc": "0",
+            "imp1Bruto": 1.5,
+            "desc1Valor": 0,
+            "importe1": 1.5,
+            "ivaPorcent": "4",
+            "ivaValLin1": 0.06,
+            "ivaType": "4"
+        }
+    ],
+    "manoObra": {
+        "canridadManoObra": "1",
+        "precioManoObra": "33.00",
+        "importeBrutoManoObra": 33,
+        "descManoObr": 0,
+        "importeManoObra": 33,
+        "ivaPorcentManoOb": "21",
+        "valorIvaManoObra": 6.93,
+        "tipoIvaManoObra": "21"
+    },
+    "factura": {
+        "idSubTotal": 34.5,
+        "idIvaTotal": 6.989999999999999,
+        "idTotalFactura": 41.49,
+        "tipo_factura": "O",
+        "name_factura": "FACTURA",
+        "apunta_factura": ""
+    },
+    "cliente": {
+        "clientIdDeveloper": "10",
+        "clientNumber": "1",
+        "clienteRazon": "Google Spain SL"
+    },
+    "vehicle": {
+        "inputVehicleMatricula": "",
+        "inputVehicleMarca": ""
+    },
+    "desglose": [
+        {
+            "iva": 21,
+            "valor_iva": 6.93,
+            "base_imponible": 33.0,
+            "total_con_iva": 39.93,
+            "recec": 5.2
+        },
+        {
+            "iva": 10,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 1.4
+        },
+        {
+            "iva": 4,
+            "valor_iva": 0.06,
+            "base_imponible": 1.5,
+            "total_con_iva": 1.56,
+            "recec": 0
+        },
+        {
+            "iva": 0,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": "0EXENTO",
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        }
+    ],
+    "observaciones": {
+        "obstextareaid": "123"
+    },
+    "credentials": {
+        "company_id": "10",
+        "email": "suzdalenko.suzdalenko@gmail.com",
+        "cif": "4207693G",
+        "uid": "1727976914",
+        "password": "123456"
+    }
+}
