@@ -1,0 +1,92 @@
+{
+    "lineas": [
+        {
+            "numLine": "0",
+            "idArticle1": "",
+            "description": "Platano",
+            "cantidad1": "10",
+            "precio1": "0.10",
+            "descPorc": "0",
+            "imp1Bruto": 1,
+            "desc1Valor": 0,
+            "importe1": 1,
+            "ivaPorcent": "4",
+            "ivaValLin1": 0.04,
+            "ivaType": "4"
+        }
+    ],
+    "manoObra": {
+        "canridadManoObra": "1",
+        "precioManoObra": "20",
+        "importeBrutoManoObra": 20,
+        "descManoObr": 0,
+        "importeManoObra": 20,
+        "ivaPorcentManoOb": "21",
+        "valorIvaManoObra": 4.2,
+        "tipoIvaManoObra": "21"
+    },
+    "factura": {
+        "idSubTotal": 21,
+        "idIvaTotal": 4.24,
+        "idTotalFactura": 25.24,
+        "tipo_factura": "O",
+        "name_factura": "FACTURA",
+        "apunta_factura": ""
+    },
+    "cliente": {
+        "clientIdDeveloper": "9",
+        "clientNumber": "1",
+        "clienteRazon": "Fruteria Maria"
+    },
+    "vehicle": {
+        "inputVehicleMatricula": "M 98898 1",
+        "inputVehicleMarca": "macca model 10000"
+    },
+    "desglose": [
+        {
+            "iva": 21,
+            "valor_iva": 4.2,
+            "base_imponible": 20.0,
+            "total_con_iva": 24.2,
+            "recec": 5.2
+        },
+        {
+            "iva": 10,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 1.4
+        },
+        {
+            "iva": 4,
+            "valor_iva": 0.04,
+            "base_imponible": 1.0,
+            "total_con_iva": 1.04,
+            "recec": 0
+        },
+        {
+            "iva": 0,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": "0EXENTO",
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        }
+    ],
+    "observaciones": {
+        "obstextareaid": ""
+    },
+    "credentials": {
+        "company_id": "9",
+        "email": "alexey.saron@gmail.com",
+        "cif": "4207693X",
+        "uid": "1727469035",
+        "password": "123456"
+    }
+}

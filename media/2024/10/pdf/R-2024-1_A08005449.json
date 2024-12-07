@@ -1,0 +1,92 @@
+{
+    "lineas": [
+        {
+            "numLine": "0",
+            "idArticle1": "248",
+            "description": "Montaje bombillas y arreglo deposito agua",
+            "cantidad1": "1",
+            "precio1": "10.00",
+            "descPorc": "0",
+            "imp1Bruto": 10,
+            "desc1Valor": 0,
+            "importe1": 10,
+            "ivaPorcent": "21",
+            "ivaValLin1": 2.1,
+            "ivaType": "21"
+        }
+    ],
+    "manoObra": {
+        "canridadManoObra": "1",
+        "precioManoObra": "33.00",
+        "importeBrutoManoObra": 33,
+        "descManoObr": 0,
+        "importeManoObra": 33,
+        "ivaPorcentManoOb": "21",
+        "valorIvaManoObra": 6.93,
+        "tipoIvaManoObra": "21"
+    },
+    "factura": {
+        "idSubTotal": 43,
+        "idIvaTotal": 9.03,
+        "idTotalFactura": 52.03,
+        "tipo_factura": "R",
+        "name_factura": "FACTURA RECTIFICATIVA",
+        "apunta_factura": "O-2024-3 2024-10-04"
+    },
+    "cliente": {
+        "clientIdDeveloper": "11",
+        "clientNumber": "2",
+        "clienteRazon": "Nestle Espa\u00f1a SA"
+    },
+    "vehicle": {
+        "inputVehicleMatricula": "",
+        "inputVehicleMarca": ""
+    },
+    "desglose": [
+        {
+            "iva": 21,
+            "valor_iva": 9.03,
+            "base_imponible": 43.0,
+            "total_con_iva": 64.13,
+            "recec": 5.2
+        },
+        {
+            "iva": 10,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 1.4
+        },
+        {
+            "iva": 4,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": 0,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": "0EXENTO",
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        }
+    ],
+    "observaciones": {
+        "obstextareaid": ""
+    },
+    "credentials": {
+        "company_id": "10",
+        "email": "suzdalenko.suzdalenko@gmail.com",
+        "cif": "4207693G",
+        "uid": "1727976914",
+        "password": "123456"
+    }
+}

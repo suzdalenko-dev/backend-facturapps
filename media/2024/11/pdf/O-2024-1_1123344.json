@@ -1,0 +1,92 @@
+{
+    "lineas": [
+        {
+            "numLine": "0",
+            "idArticle1": "253",
+            "description": "Work",
+            "cantidad1": "1",
+            "precio1": "30.00",
+            "descPorc": "0",
+            "imp1Bruto": 30,
+            "desc1Valor": 0,
+            "importe1": 30,
+            "ivaPorcent": "4",
+            "ivaValLin1": 1.2,
+            "ivaType": "4"
+        }
+    ],
+    "manoObra": {
+        "canridadManoObra": 0,
+        "precioManoObra": "0.00",
+        "importeBrutoManoObra": 0,
+        "descManoObr": 0,
+        "importeManoObra": 0,
+        "ivaPorcentManoOb": "21",
+        "valorIvaManoObra": 0,
+        "tipoIvaManoObra": "21"
+    },
+    "factura": {
+        "idSubTotal": 30,
+        "idIvaTotal": 1.2,
+        "idTotalFactura": 31.2,
+        "tipo_factura": "O",
+        "name_factura": "FACTURA",
+        "apunta_factura": ""
+    },
+    "cliente": {
+        "clientIdDeveloper": "12",
+        "clientNumber": "1",
+        "clienteRazon": "Client"
+    },
+    "vehicle": {
+        "inputVehicleMatricula": "",
+        "inputVehicleMarca": ""
+    },
+    "desglose": [
+        {
+            "iva": 21,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 5.2
+        },
+        {
+            "iva": 10,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 1.4
+        },
+        {
+            "iva": 4,
+            "valor_iva": 1.2,
+            "base_imponible": 30.0,
+            "total_con_iva": 31.2,
+            "recec": 0
+        },
+        {
+            "iva": 0,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": "0EXENTO",
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        }
+    ],
+    "observaciones": {
+        "obstextareaid": ""
+    },
+    "credentials": {
+        "company_id": "11",
+        "email": "lymgamesproductions@gmail.com",
+        "cif": "14677892",
+        "uid": "1731766652",
+        "password": "Elfamoso123."
+    }
+}
