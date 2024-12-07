@@ -4,7 +4,7 @@ import requests
 
 def parse_work(request, id):
 
-    url = "https://example.com"
+    url = "https://kasparov.ru"
     response = requests.get(url)
 
     return json_suzdal({'id': response.text })
