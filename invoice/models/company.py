@@ -4,10 +4,10 @@ class Company(models.Model):
     id           = models.AutoField(primary_key=True)
     razon        = models.CharField(max_length=111, null=True)
     person_name  = models.CharField(max_length=111, null=True)
-    cif          = models.CharField(max_length=33, null=True, unique=True)
-    email        = models.CharField(max_length=111, null=True, unique=True) 
+    cif          = models.CharField(max_length=33, unique=True, null=True,)
+    email        = models.CharField(max_length=111, unique=True, null=True) 
     emailcompany = models.CharField(max_length=111, null=True) 
-    password     = models.CharField(max_length=111, null=True)
+    password     = models.CharField(max_length=222, null=True)
     tlf          = models.CharField(max_length=33, null=True)
     tlf2         = models.CharField(max_length=33, null=True)
 

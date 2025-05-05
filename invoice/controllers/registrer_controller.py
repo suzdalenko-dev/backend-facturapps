@@ -1,4 +1,5 @@
 from invoice.models.company import Company
+from django.contrib.auth.hashers import make_password
 from ..utils.util_suzdal import json_suzdal
 from ..utils.time_suzdal import time_suzdal
 from ..utils.time_suzdal import second_suzdal
@@ -11,14 +12,15 @@ def try_register(request):
         tlf      = request.POST.get('tlf').strip()
         password = request.POST.get('password').strip()
 
-        company, createdTrue = Company.objects.get_or_create(cif=cif, email=email, password=password)
+        company, createdTrue = Company.objects.get_or_create(cif=cif, email=email,)
         company.tlf = tlf
         company.numvisit += 1
 
         if createdTrue:
-            company.state   = 'activo'
-            company.regtime = time_suzdal()
-            company.uid     = second_suzdal()
+            company.state    = 'activo'
+            company.regtime  = time_suzdal()
+            company.uid      = second_suzdal()
+            company.password = make_password(password)
         
         company.lastvisit   = time_suzdal()
         company.save()

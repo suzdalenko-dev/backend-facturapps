@@ -1,17 +1,16 @@
 from invoice.models.company import Company
+from django.contrib.auth.hashers import check_password
 from ..utils.util_suzdal import json_suzdal
 from ..utils.time_suzdal import time_suzdal
 
 
 def try_login(request):
     try:
-
-        cif      = request.POST.get('cif').strip()
         email    = request.POST.get('email').strip()
         password = request.POST.get('password').strip()
 
-        company = Company.objects.get(cif=cif, email=email)
-        if company.password != password:
+        company = Company.objects.get(email=email)
+        if not check_password(password, company.password):
             return json_suzdal({'message': 'Usuario no encotrado..', 'status': 'error'})
       
         company.lastvisit = time_suzdal()

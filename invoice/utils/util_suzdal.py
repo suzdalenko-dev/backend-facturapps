@@ -1,3 +1,4 @@
+from django.contrib.auth.hashers import check_password
 from email import encoders
 from email.mime.base import MIMEBase
 import os
@@ -42,13 +43,15 @@ def user_auth(request, data):
 
     try:
         company = Company.objects.filter(id=company_id).values('id', 'razon', 'cif', 'person_name', 'email', 'emailcompany', 'uid', 'password', 'tlf', 'tlf2', 'country', 'city', 'zipcode', 'province', 'address', 'price').first()
-        if company['cif'] == cif and company['email'] == email and company['uid'] == uid and company['password'] == password:
+        
+        if company['uid'] == uid and check_password(password, company['password']):
             company['password'] = None
             company['uid'] = None
             return [True, company]
         else: 
             return [None, None]
     except Exception as e:
+        
         return [None, None]
     
 
