@@ -1,0 +1,18 @@
+Usuario (Navegador Web)
+        │
+        ▼
+Frontend (Firebase Hosting)
+  - HTML / CSS / JavaScript
+  - Bootstrap para diseño
+  - AJAX para llamadas asíncronas
+        │
+        ▼
+Backend (PythonAnywhere)
+  - Framework Django
+  - Vistas tipo API (JSON)
+  - Generación de facturas PDF
+  - Validación de datos
+        │
+        ▼
+Base de datos (SQLite)
+  - Tablas: Cliente, Artículo, Factura, Empresa, etc.
