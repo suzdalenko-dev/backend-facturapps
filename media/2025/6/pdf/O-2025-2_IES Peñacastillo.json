@@ -1,0 +1,106 @@
+{
+    "lineas": [
+        {
+            "numLine": "0",
+            "idArticle1": "2",
+            "description": "Desarrollo App Personalizada",
+            "cantidad1": "2",
+            "precio1": "1000.00",
+            "descPorc": "0",
+            "imp1Bruto": 2000,
+            "desc1Valor": 0,
+            "importe1": 2000,
+            "ivaPorcent": "21",
+            "ivaValLin1": 420,
+            "ivaType": "21"
+        },
+        {
+            "numLine": "1",
+            "idArticle1": "",
+            "description": "Configuracion Servidor",
+            "cantidad1": "1",
+            "precio1": "30",
+            "descPorc": "0",
+            "imp1Bruto": 30,
+            "desc1Valor": 0,
+            "importe1": 30,
+            "ivaPorcent": "21",
+            "ivaValLin1": 6.3,
+            "ivaType": "21"
+        }
+    ],
+    "manoObra": {
+        "canridadManoObra": "10",
+        "precioManoObra": "22.00",
+        "importeBrutoManoObra": 220,
+        "descManoObr": 0,
+        "importeManoObra": 220,
+        "ivaPorcentManoOb": "21",
+        "valorIvaManoObra": 46.199999999999996,
+        "tipoIvaManoObra": "21"
+    },
+    "factura": {
+        "idSubTotal": 2250,
+        "idIvaTotal": 472.5,
+        "idTotalFactura": 2722.5,
+        "tipo_factura": "O",
+        "name_factura": "FACTURA",
+        "apunta_factura": ""
+    },
+    "cliente": {
+        "clientIdDeveloper": "1",
+        "clientNumber": "1",
+        "clienteRazon": "IES Pe\u00f1acastillo"
+    },
+    "vehicle": {
+        "inputVehicleMatricula": "",
+        "inputVehicleMarca": ""
+    },
+    "desglose": [
+        {
+            "iva": 21,
+            "valor_iva": 472.5,
+            "base_imponible": 2250.0,
+            "total_con_iva": 7598.8,
+            "recec": 5.2
+        },
+        {
+            "iva": 10,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 1.4
+        },
+        {
+            "iva": 4,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": 0,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": "0EXENTO",
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        }
+    ],
+    "observaciones": {
+        "obstextareaid": "Sin"
+    },
+    "credentials": {
+        "company_id": "6",
+        "email": "alexey.suzdalenko@gmail.com",
+        "cif": "A123456",
+        "uid": "1746440570",
+        "password": "123456"
+    }
+}

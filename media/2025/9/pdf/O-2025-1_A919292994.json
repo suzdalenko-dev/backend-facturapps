@@ -1,0 +1,92 @@
+{
+    "lineas": [
+        {
+            "numLine": "0",
+            "idArticle1": "",
+            "description": "Desarrollo Portal Empleado",
+            "cantidad1": "1",
+            "precio1": "1000",
+            "descPorc": "0",
+            "imp1Bruto": 1000,
+            "desc1Valor": 0,
+            "importe1": 1000,
+            "ivaPorcent": "21",
+            "ivaValLin1": 210,
+            "ivaType": "21"
+        }
+    ],
+    "manoObra": {
+        "canridadManoObra": "40",
+        "precioManoObra": "22.00",
+        "importeBrutoManoObra": 880,
+        "descManoObr": 0,
+        "importeManoObra": 880,
+        "ivaPorcentManoOb": "21",
+        "valorIvaManoObra": 184.79999999999998,
+        "tipoIvaManoObra": "21"
+    },
+    "factura": {
+        "idSubTotal": 1880,
+        "idIvaTotal": 394.79999999999995,
+        "idTotalFactura": 2274.8,
+        "tipo_factura": "O",
+        "name_factura": "FACTURA",
+        "apunta_factura": ""
+    },
+    "cliente": {
+        "clientIdDeveloper": "3",
+        "clientNumber": "1",
+        "clienteRazon": "Nestle"
+    },
+    "vehicle": {
+        "inputVehicleMatricula": "",
+        "inputVehicleMarca": ""
+    },
+    "desglose": [
+        {
+            "iva": 21,
+            "valor_iva": 394.79999999999995,
+            "base_imponible": 1880.0,
+            "total_con_iva": 3484.8,
+            "recec": 5.2
+        },
+        {
+            "iva": 10,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 1.4
+        },
+        {
+            "iva": 4,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": 0,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": "0EXENTO",
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        }
+    ],
+    "observaciones": {
+        "obstextareaid": "Trabajo terminado"
+    },
+    "credentials": {
+        "company_id": "9",
+        "email": "a1@gmail.com",
+        "cif": "CIF123456",
+        "uid": "1749998638",
+        "password": "123456"
+    }
+}

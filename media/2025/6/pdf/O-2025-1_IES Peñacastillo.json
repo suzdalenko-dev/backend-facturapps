@@ -1,0 +1,106 @@
+{
+    "lineas": [
+        {
+            "numLine": "0",
+            "idArticle1": "2",
+            "description": "Desarrollo App Personalizada",
+            "cantidad1": "1",
+            "precio1": "1000.00",
+            "descPorc": "0",
+            "imp1Bruto": 1000,
+            "desc1Valor": 0,
+            "importe1": 1000,
+            "ivaPorcent": "21",
+            "ivaValLin1": 210,
+            "ivaType": "21"
+        },
+        {
+            "numLine": "1",
+            "idArticle1": "3",
+            "description": "Informe Power BI",
+            "cantidad1": "1",
+            "precio1": "3000.00",
+            "descPorc": "0",
+            "imp1Bruto": 3000,
+            "desc1Valor": 0,
+            "importe1": 3000,
+            "ivaPorcent": "21",
+            "ivaValLin1": 630,
+            "ivaType": "21"
+        }
+    ],
+    "manoObra": {
+        "canridadManoObra": "10",
+        "precioManoObra": "22.00",
+        "importeBrutoManoObra": 220,
+        "descManoObr": 0,
+        "importeManoObra": 220,
+        "ivaPorcentManoOb": "21",
+        "valorIvaManoObra": 46.199999999999996,
+        "tipoIvaManoObra": "21"
+    },
+    "factura": {
+        "idSubTotal": 4220,
+        "idIvaTotal": 886.2,
+        "idTotalFactura": 5106.2,
+        "tipo_factura": "O",
+        "name_factura": "FACTURA",
+        "apunta_factura": ""
+    },
+    "cliente": {
+        "clientIdDeveloper": "1",
+        "clientNumber": "1",
+        "clienteRazon": "IES Pe\u00f1acastillo"
+    },
+    "vehicle": {
+        "inputVehicleMatricula": "",
+        "inputVehicleMarca": ""
+    },
+    "desglose": [
+        {
+            "iva": 21,
+            "valor_iva": 886.2,
+            "base_imponible": 4220.0,
+            "total_con_iva": 11156.2,
+            "recec": 5.2
+        },
+        {
+            "iva": 10,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 1.4
+        },
+        {
+            "iva": 4,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": 0,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": "0EXENTO",
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        }
+    ],
+    "observaciones": {
+        "obstextareaid": "El trabajo ejecutado antes de tiempo"
+    },
+    "credentials": {
+        "company_id": "6",
+        "email": "alexey.suzdalenko@gmail.com",
+        "cif": "A123456",
+        "uid": "1746440570",
+        "password": "123456"
+    }
+}
