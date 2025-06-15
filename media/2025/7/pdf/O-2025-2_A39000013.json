@@ -1,0 +1,92 @@
+{
+    "lineas": [
+        {
+            "numLine": "0",
+            "idArticle1": "",
+            "description": "Mejora de la presencia de la web general",
+            "cantidad1": "1",
+            "precio1": "1310.41",
+            "descPorc": "0",
+            "imp1Bruto": 1310.41,
+            "desc1Valor": 0,
+            "importe1": 1310.41,
+            "ivaPorcent": "21",
+            "ivaValLin1": 275.1861,
+            "ivaType": "21"
+        }
+    ],
+    "manoObra": {
+        "canridadManoObra": 0,
+        "precioManoObra": "22.50",
+        "importeBrutoManoObra": 0,
+        "descManoObr": 0,
+        "importeManoObra": 0,
+        "ivaPorcentManoOb": "21",
+        "valorIvaManoObra": 0,
+        "tipoIvaManoObra": "21"
+    },
+    "factura": {
+        "idSubTotal": 1310.41,
+        "idIvaTotal": 275.1861,
+        "idTotalFactura": 1585.5961000000002,
+        "tipo_factura": "O",
+        "name_factura": "FACTURA",
+        "apunta_factura": ""
+    },
+    "cliente": {
+        "clientIdDeveloper": "5",
+        "clientNumber": "2",
+        "clienteRazon": "Banco Santander S.A."
+    },
+    "vehicle": {
+        "inputVehicleMatricula": "",
+        "inputVehicleMarca": ""
+    },
+    "desglose": [
+        {
+            "iva": 21,
+            "valor_iva": 275.1861,
+            "base_imponible": 1310.41,
+            "total_con_iva": 1585.5961000000002,
+            "recec": 5.2
+        },
+        {
+            "iva": 10,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 1.4
+        },
+        {
+            "iva": 4,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": 0,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": "0EXENTO",
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        }
+    ],
+    "observaciones": {
+        "obstextareaid": "Sin observaciones"
+    },
+    "credentials": {
+        "company_id": "7",
+        "email": "alexey@gmail.com",
+        "cif": "A1234561",
+        "uid": "1748701447",
+        "password": "123456"
+    }
+}

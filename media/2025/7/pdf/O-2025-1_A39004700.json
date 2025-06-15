@@ -1,0 +1,106 @@
+{
+    "lineas": [
+        {
+            "numLine": "0",
+            "idArticle1": "8",
+            "description": "Aplicaci\u00f3n de Fichaje Horario Laboral",
+            "cantidad1": "1",
+            "precio1": "2100.00",
+            "descPorc": "10",
+            "imp1Bruto": 2100,
+            "desc1Valor": 210,
+            "importe1": 1890,
+            "ivaPorcent": "21",
+            "ivaValLin1": 396.9,
+            "ivaType": "21"
+        },
+        {
+            "numLine": "1",
+            "idArticle1": "7",
+            "description": "Portal del Empleado",
+            "cantidad1": "1",
+            "precio1": "1000.00",
+            "descPorc": "5",
+            "imp1Bruto": 1000,
+            "desc1Valor": 50,
+            "importe1": 950,
+            "ivaPorcent": "21",
+            "ivaValLin1": 199.5,
+            "ivaType": "21"
+        }
+    ],
+    "manoObra": {
+        "canridadManoObra": "20",
+        "precioManoObra": "22.50",
+        "importeBrutoManoObra": 450,
+        "descManoObr": 0,
+        "importeManoObra": 450,
+        "ivaPorcentManoOb": "21",
+        "valorIvaManoObra": 94.5,
+        "tipoIvaManoObra": "21"
+    },
+    "factura": {
+        "idSubTotal": 3290,
+        "idIvaTotal": 690.9,
+        "idTotalFactura": 3980.9,
+        "tipo_factura": "O",
+        "name_factura": "FACTURA",
+        "apunta_factura": ""
+    },
+    "cliente": {
+        "clientIdDeveloper": "6",
+        "clientNumber": "3",
+        "clienteRazon": "PLASTICOS ESPA\u00d1OLES SA"
+    },
+    "vehicle": {
+        "inputVehicleMatricula": "",
+        "inputVehicleMarca": ""
+    },
+    "desglose": [
+        {
+            "iva": 21,
+            "valor_iva": 690.9,
+            "base_imponible": 3290.0,
+            "total_con_iva": 9704.2,
+            "recec": 5.2
+        },
+        {
+            "iva": 10,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 1.4
+        },
+        {
+            "iva": 4,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": 0,
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        },
+        {
+            "iva": "0EXENTO",
+            "valor_iva": 0,
+            "base_imponible": 0,
+            "total_con_iva": 0,
+            "recec": 0
+        }
+    ],
+    "observaciones": {
+        "obstextareaid": "Trabajo terminado antes de tiempo"
+    },
+    "credentials": {
+        "company_id": "7",
+        "email": "alexey@gmail.com",
+        "cif": "A1234561",
+        "uid": "1748701447",
+        "password": "123456"
+    }
+}
